@@ -1,52 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ChildKeys from "./ChildKeys/ChildKeys";
 import './Keyboard.css'
+import Keys from "./Keys/Keys";
 function Keyboard() {
+  const [child,setChid] = useState(false)
+  useEffect(()=>{
+    console.log(child);
+  },[child])
   return (
-    <div className="keyboard">
+    <div className="keyboards">
+      <ChildKeys k={child}/>
       <div className="keyboard first_row">
-        <div className="keys">ሀ</div>
-        <div className="keys">ለ</div>
-        <div className="keys">ሐ</div>
-        <div className="keys">መ</div>
-        <div className="keys">ሠ</div>
-        <div className="keys">ረ</div>
-        <div className="keys">ሰ</div>
-        <div className="keys">ሸ</div>
-        <div className="keys">ቀ</div>
-        <div className="keys">በ</div>
-        <div className="keys">ተ</div>
-        <div className="keys">ቸ</div>
+        <Keys changeKey={setChid} k="ሀ"/>
+        <Keys changeKey={setChid} k="ለ"/>
+        <Keys changeKey={setChid} k="ሐ"/>
+        <Keys changeKey={setChid} k="መ"/>
+        <Keys changeKey={setChid} k="ሠ"/>
+        <Keys changeKey={setChid} k="ረ"/>
+        <Keys changeKey={setChid} k="ሰ"/>
+        <Keys changeKey={setChid} k="ሸ"/>
+        <Keys changeKey={setChid} k="ቀ"/>
+        <Keys changeKey={setChid} k="በ"/>
+        <Keys changeKey={setChid} k="ተ"/>
+        <Keys changeKey={setChid} k="ቸ"/>
       </div>
       <div className=" keyboard second_row">
-        <div className="keys">ኀ</div>
-        <div className="keys">ነ</div>
-        <div className="keys">ኘ</div>
-        <div className="keys">አ</div>
-        <div className="keys">ከ</div>
-        <div className="keys">ኸ</div>
-        <div className="keys">ሰ</div>
-        <div className="keys">ሸ</div>
-        <div className="keys">ወ</div>
-        <div className="keys">ዐ</div>
-        <div className="keys">ዘ</div>
-        <div className="keys">ዠ</div>
+        <Keys changeKey={setChid} k="ኀ"/>
+        <Keys changeKey={setChid} k="ነ"/>
+        <Keys changeKey={setChid} k="ኘ"/>
+        <Keys changeKey={setChid} k="አ"/>
+        <Keys changeKey={setChid} k="ከ"/>
+        <Keys changeKey={setChid} k="ኸ"/>
+        <Keys changeKey={setChid} k="ሰ"/>
+        <Keys changeKey={setChid} k="ሸ"/>
+        <Keys changeKey={setChid} k="ወ"/>
+        <Keys changeKey={setChid} k="ዐ"/>
+        <Keys changeKey={setChid} k="ዘ"/>
+        <Keys changeKey={setChid} k="ዠ"/>
         
       </div>
       <div className="keyboard third_row">
         <div className="keys">Enter</div>
-        <div className="keys">የ</div>
-        <div className="keys">ደ</div>
-        <div className="keys">ጀ</div>
-        <div className="keys">ገ</div>
-        <div className="keys">ጠ</div>
-        <div className="keys">ጨ</div>
-        <div className="keys">ጰ</div>
-        <div className="keys">ጸ</div>
-        <div className="keys">ፀ</div>
-        <div className="keys">ፈ</div>
-        <div className="keys">ፐ</div>
-        <div className="keys">ቨ</div>
+        <Keys changeKey={setChid} k="የ"/>
+        <Keys changeKey={setChid} k="ደ"/>
+        <Keys changeKey={setChid} k="ጀ"/>
+        <Keys changeKey={setChid} k="ገ"/>
+        <Keys changeKey={setChid} k="ጠ"/>
+        <Keys changeKey={setChid} k="ጨ"/>
+        <Keys changeKey={setChid} k="ጰ"/>
+        <Keys changeKey={setChid} k="ጸ"/>
+        <Keys changeKey={setChid} k="ፀ"/>
+        <Keys changeKey={setChid} k="ፈ"/>
+        <Keys changeKey={setChid} k="ፐ"/>
+        <Keys changeKey={setChid} k="ቨ"/>
         <div className="keys">bksps</div>
+
       </div>
     </div>
   );

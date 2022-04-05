@@ -7,7 +7,7 @@ function Grid() {
   const rowSize = [0,0,0,0,0]
   return (
     <div className="grid_wrapper">
-      {rowSize.map(()=><GridRow />)}
+      {rowSize.map((k,i)=><GridRow key={i}/>)}
     </div>
   );
 }

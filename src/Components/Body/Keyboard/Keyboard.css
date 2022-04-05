@@ -1,18 +1,26 @@
 .keyboard{
-
-    
-}
-.first_row, .second_row, .third_row{
     font-size: 1.2rem;
     display: flex;
     justify-content: center;
     text-align: center;
     flex-direction: row; margin: 5px;
+    
+}
+.keyboard.leave-space{
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+.first_row, .second_row, .third_row{
+    
 }
 .keys{
     color: white;
     border-radius: 5px;
     background-color: #818384;
-    padding: 0.5rem 0.75rem;
+    padding: 0.3rem 0.6rem;
     margin: 5px;
+    cursor: pointer;
+}
+.keys:hover{
+    background-color: #585858;
 }
