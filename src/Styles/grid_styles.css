@@ -1,0 +1,27 @@
+/* box outline color : #3A3A3C */
+/* keyboard keys color : #818384 */
+/* body color : #121213 */
+
+.grid_wrapper {
+    display: grid;
+    place-items: center;
+    margin: 20px;
+}
+
+.grid_row {
+    /* background-color: aqua; */
+    display: flex;
+    font-size: 50px;
+}
+.row_items{
+    color: white;
+    font-size: 80;
+    font-weight: 700;
+    border: 3px solid #3A3A3C;
+    margin: 5px;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}

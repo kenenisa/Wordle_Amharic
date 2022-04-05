@@ -1,0 +1,19 @@
+.keyboard{
+
+    
+}
+.first_row, .second_row, .third_row{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row; margin: 5px;
+}
+.keys{
+    color: white;
+    border-radius: 5px;
+    background-color: #818384;
+    padding: 20px;
+    margin: 5px;
+
+}
