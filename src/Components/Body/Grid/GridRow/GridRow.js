@@ -1,5 +1,4 @@
 import React from "react";
-import "../Styles/grid_styles.css";
 
 function Grid_row() {
   return (

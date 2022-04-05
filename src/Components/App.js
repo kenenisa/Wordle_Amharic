@@ -1,7 +1,6 @@
+import React from 'react'
 import "./App.css";
-import Grid from "./Components/Grid";
-import Keyboard from "./Components/Keyboard";
-
+import Body from './Body/Body';
 function App() {
   return (
     <div className="App">
@@ -9,12 +8,7 @@ function App() {
         <h3>ወርድል</h3>
       </div>
       <div className="body">
-        <div className="grid">
-          <Grid />
-        </div>
-        <div className="keyboard">
-          <Keyboard />
-        </div>
+        <Body/>
       </div>
     </div>
   );

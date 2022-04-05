@@ -1,6 +1,5 @@
 import React from "react";
-import "../Styles/keyboard_Styles.css";
-
+import './Keyboard.css'
 function Keyboard() {
   return (
     <div className="keyboard">
