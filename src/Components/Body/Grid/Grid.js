@@ -4,14 +4,10 @@ import './Grid.css';
 import GridRow from './GridRow/GridRow';
 //
 function Grid() {
+  const rowSize = [0,0,0,0,0]
   return (
     <div className="grid_wrapper">
-      <GridRow />
-      <GridRow />
-      <GridRow />
-      <GridRow />
-      <GridRow />
-      <GridRow />
+      {rowSize.map(()=><GridRow />)}
     </div>
   );
 }

@@ -11,16 +11,15 @@
 .grid_row {
     /* background-color: aqua; */
     display: flex;
-    font-size: 50px;
+    font-size: 2rem;
 }
 .row_items{
     color: white;
-    font-size: 80;
     font-weight: 700;
     border: 3px solid #3A3A3C;
-    margin: 5px;
-    width: 80px;
-    height: 80px;
+    margin: 0.5rem;
+    width: 3rem;
+    height: 3rem;
     display: inline-flex;
     justify-content: center;
     align-items: center;

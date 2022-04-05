@@ -4,16 +4,16 @@ function Keyboard() {
   return (
     <div className="keyboard">
       <div className="keyboard first_row">
-        <div className="keys">Q</div>
-        <div className="keys">W</div>
-        <div className="keys">E</div>
-        <div className="keys">R</div>
-        <div className="keys">T</div>
-        <div className="keys">Y</div>
-        <div className="keys">U</div>
-        <div className="keys">I</div>
-        <div className="keys">O</div>
-        <div className="keys">P</div>
+        <div className="keys">ሀ</div>
+        <div className="keys">ለ</div>
+        <div className="keys">ሐ</div>
+        <div className="keys">መ</div>
+        <div className="keys">ሠ</div>
+        <div className="keys">ረ</div>
+        <div className="keys">ሰ</div>
+        <div className="keys">ሸ</div>
+        <div className="keys">ቀ</div>
+        <div className="keys">በ</div>
       </div>
       <div className=" keyboard second_row">
         <div className="keys">A</div>
@@ -42,3 +42,37 @@ function Keyboard() {
 }
 
 export default Keyboard;
+// ሀ
+// ለ
+// ሐ
+// መ
+// ሠ
+// ረ
+// ሰ
+// ሸ
+// ቀ
+// በ
+// ተ
+// ቸ
+// ኀ
+// ነ
+// ኘ
+// አ
+// ከ
+// ኸ
+// ወ
+// ዐ
+// ዘ
+// ዠ
+// የ
+// ደ
+// ጀ
+// ገ
+// ጠ
+// ጨ
+// ጰ
+// ጸ
+// ፀ
+// ፈ
+// ፐ
+// ቨ

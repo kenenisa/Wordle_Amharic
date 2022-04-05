@@ -3,7 +3,7 @@
     
 }
 .first_row, .second_row, .third_row{
-    font-size: 30px;
+    font-size: 1.2rem;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -13,7 +13,6 @@
     color: white;
     border-radius: 5px;
     background-color: #818384;
-    padding: 20px;
+    padding: 0.5rem 0.75rem;
     margin: 5px;
-
 }
