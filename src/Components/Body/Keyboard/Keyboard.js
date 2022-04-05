@@ -14,27 +14,38 @@ function Keyboard() {
         <div className="keys">ሸ</div>
         <div className="keys">ቀ</div>
         <div className="keys">በ</div>
+        <div className="keys">ተ</div>
+        <div className="keys">ቸ</div>
       </div>
       <div className=" keyboard second_row">
-        <div className="keys">A</div>
-        <div className="keys">S</div>
-        <div className="keys">D</div>
-        <div className="keys">F</div>
-        <div className="keys">G</div>
-        <div className="keys">H</div>
-        <div className="keys">J</div>
-        <div className="keys">K</div>
-        <div className="keys">L</div>
+        <div className="keys">ኀ</div>
+        <div className="keys">ነ</div>
+        <div className="keys">ኘ</div>
+        <div className="keys">አ</div>
+        <div className="keys">ከ</div>
+        <div className="keys">ኸ</div>
+        <div className="keys">ሰ</div>
+        <div className="keys">ሸ</div>
+        <div className="keys">ወ</div>
+        <div className="keys">ዐ</div>
+        <div className="keys">ዘ</div>
+        <div className="keys">ዠ</div>
+        
       </div>
       <div className="keyboard third_row">
         <div className="keys">Enter</div>
-        <div className="keys">Z</div>
-        <div className="keys">X</div>
-        <div className="keys">C</div>
-        <div className="keys">V</div>
-        <div className="keys">B</div>
-        <div className="keys">N</div>
-        <div className="keys">M</div>
+        <div className="keys">የ</div>
+        <div className="keys">ደ</div>
+        <div className="keys">ጀ</div>
+        <div className="keys">ገ</div>
+        <div className="keys">ጠ</div>
+        <div className="keys">ጨ</div>
+        <div className="keys">ጰ</div>
+        <div className="keys">ጸ</div>
+        <div className="keys">ፀ</div>
+        <div className="keys">ፈ</div>
+        <div className="keys">ፐ</div>
+        <div className="keys">ቨ</div>
         <div className="keys">bksps</div>
       </div>
     </div>
@@ -60,19 +71,3 @@ export default Keyboard;
 // አ
 // ከ
 // ኸ
-// ወ
-// ዐ
-// ዘ
-// ዠ
-// የ
-// ደ
-// ጀ
-// ገ
-// ጠ
-// ጨ
-// ጰ
-// ጸ
-// ፀ
-// ፈ
-// ፐ
-// ቨ
