@@ -13,6 +13,9 @@
     display: flex;
     font-size: 2rem;
 }
+.grid_row.final .row_items{
+    border: 3px solid #046b0a;
+}
 .row_items{
     color: white;
     font-weight: 700;

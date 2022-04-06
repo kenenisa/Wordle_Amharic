@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import ChildKeys from "./ChildKeys/ChildKeys";
 import './Keyboard.css'
 import Keys from "./Keys/Keys";
-function Keyboard() {
-  const [child,setChid] = useState(false)
+function Keyboard({setWords,handleSubmit,handleBackspace}) {
+  const [child, setChid] = useState(false);
   useEffect(()=>{
     console.log(child);
   },[child])
   return (
     <div className="keyboards">
-      <ChildKeys k={child}/>
+      <ChildKeys k={child} setWords={setWords}/>
       <div className="keyboard first_row">
         <Keys changeKey={setChid} k="ሀ"/>
         <Keys changeKey={setChid} k="ለ"/>
@@ -40,7 +40,7 @@ function Keyboard() {
         
       </div>
       <div className="keyboard third_row">
-        <div className="keys">Enter</div>
+        <div className="keys" onClick={handleSubmit}>Enter</div>
         <Keys changeKey={setChid} k="የ"/>
         <Keys changeKey={setChid} k="ደ"/>
         <Keys changeKey={setChid} k="ጀ"/>
@@ -53,7 +53,7 @@ function Keyboard() {
         <Keys changeKey={setChid} k="ፈ"/>
         <Keys changeKey={setChid} k="ፐ"/>
         <Keys changeKey={setChid} k="ቨ"/>
-        <div className="keys">bksps</div>
+        <div className="keys" onClick={handleBackspace}>bksps</div>
 
       </div>
     </div>
