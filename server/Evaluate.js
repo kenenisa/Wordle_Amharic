@@ -49,7 +49,7 @@ module.exports = (tried) => {
         if (result[i] === 0) {
             let val = 0
             for (let j = 0; j < chosenPlace.length; j++) {
-                if (t === chosenPlace[j]) {
+                if (t === chosenPlace[j] && chosenWord[j] !== null) {
                     if (i === j) {
                         val = 2
                         chosenPlace[j] = null
