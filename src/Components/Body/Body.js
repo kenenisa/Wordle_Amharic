@@ -12,11 +12,18 @@ function Body() {
   const [final, setFinal] = useState([]);
   const [evaluated, setEvaluated] = useState([]);
   const [x, setX] = useState(0);
-  const changeWords = (k) => {
+  const changeWords = (k,replace=false) => {
     const temp = words;
-    if (temp[rowCount].length < 5) {
+    if (temp[rowCount].length < 5 || replace) {
       if (words[rowCount].length) {
-        temp[rowCount].push(k);
+        if(!replace){
+          temp[rowCount].push(k);
+        }else{
+          console.log('here');
+          const tr = temp[rowCount]
+          tr[tr.length - 1] = k
+          temp[rowCount] = tr
+        }
       } else {
         temp[rowCount] = [k];
       }
@@ -28,14 +35,6 @@ function Body() {
 
   const handleSubmit = async () => {
     if (words[rowCount].length === 5) {
-      // const joined = words[rowCount].join('')
-      // const found = WordList.wordList.find(w => w.word == joined)
-      // console.log(found);
-      // if (found) {
-
-      // }
-      // const originalWord = words[rowCount]
-
       const evf = await fetch(
         process.env.REACT_APP_REMOTE_HOST +
           "/evaluate?tried=" +
