@@ -13,16 +13,19 @@ body {
   flex-direction: column;
 }
 .t{
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   background-color: aquamarine;
 }
 .header {
   background-color: #121213;
   color: white;
-  font-size: 3rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   text-align: center;
   border-bottom: 0.5px solid #3A3A3C;
+  
+}
+@media (max-width: 990px) {
   
 }

@@ -9,13 +9,14 @@
 }
 .keyboard .actions{
     position:absolute;
-    top:0;
+    bottom:0;
     left:50%;
     transform: translateX(-50%);
     width:30rem;
     margin:auto;
     background: blue;
     z-index:1;
+    user-select: none;
 }
 .keyboard .actions div{
     display: inline-block;
@@ -43,12 +44,13 @@
     padding: 0.3rem 0.6rem;
     margin: 5px;
     cursor: pointer;
+    user-select: none;
 }
 .keys:hover{
     background-color: #585858;
 }
 @media screen and (max-width:500px){
 .keyboard{
-    width:30rem;
+    max-width:100%;
 }
 }

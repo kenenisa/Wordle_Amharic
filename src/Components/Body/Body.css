@@ -1,0 +1,21 @@
+@media (max-width: 990px) {
+    body{
+        align-items: center;
+        width: 80%;
+        position: absolute;
+    
+        height: 100%;
+        display: grid;
+        place-items: center;
+    }
+}
+.message{
+    background-color: white !important;
+    color:  black!important;
+    text-align: center!important;
+    width: 10rem;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
