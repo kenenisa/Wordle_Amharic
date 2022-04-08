@@ -21,21 +21,11 @@
 .keyboard .actions div{
     display: inline-block;
 }
-.keyboard .actions div.e{
-    position: absolute;
-    left:0;
-}
-.keyboard .actions div.b{
-    position: absolute;
-    right:0;
-}
+
 .keyboard.leave-space{
     top:-0.5rem;
     height: 3rem;
     margin-bottom: -0.5rem;
-}
-.first_row, .second_row, .third_row{
-    
 }
 .keys{
     color: rgb(255, 255, 255);
@@ -47,9 +37,17 @@
     cursor: pointer;
     user-select: none;
     font-size: 1rem;
+    border-radius: 3px;
 }
 .keys:hover{
     background-color: #585858;
+}
+.keyboard button.a{
+    height: 2rem !important;
+    background: #393e3f;
+}
+.keyboard button.a img{
+    margin-top: -0.1rem;
 }
 @media screen and (max-width:500px){
 .keyboard{

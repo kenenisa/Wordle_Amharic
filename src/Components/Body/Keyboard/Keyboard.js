@@ -41,8 +41,8 @@ function Keyboard({ setWords, handleSubmit, handleBackspace }) {
         <Keys changeKey={changeChid} k="ደ" />
       </div>
       <div className="keyboard third_row">
-        <button className="keys e" onClick={handleSubmit}>
-          <img src={check} width="15"/>
+        <button className="keys e a" onClick={handleSubmit}>
+          <img src={check} width="23"/>
         </button>
         <Keys changeKey={changeChid} k="ጀ" />
         <Keys changeKey={changeChid} k="ገ" />
@@ -52,8 +52,8 @@ function Keyboard({ setWords, handleSubmit, handleBackspace }) {
         <Keys changeKey={changeChid} k="ፀ" />
         <Keys changeKey={changeChid} k="ፈ" />
         <Keys changeKey={changeChid} k="ፐ" />
-        <button className="keys b" onClick={handleBackspace}>
-          <img src={backspace} width="15"/>
+        <button className="keys b a" onClick={handleBackspace}>
+          <img src={backspace} width="23"/>
         </button>
       </div>
       <div className="actions">
