@@ -5,7 +5,7 @@
 .grid_wrapper {
     display: grid;
     place-items: center;
-    margin: 20px;
+    margin: 0.25rem;
 }
 
 .grid_row {
@@ -13,9 +13,7 @@
     display: flex;
     font-size: 2rem;
 }
-.grid_row.final .row_items{
-    border: 3px solid #046b0a;
-}
+
 .row_items{
     color: white;
     font-weight: 700;

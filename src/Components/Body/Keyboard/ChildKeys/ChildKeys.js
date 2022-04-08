@@ -1,6 +1,6 @@
 import React from 'react'
 import Keys from '../Keys/Keys'
-import chars from './keysList.json';
+import chars from './../../../../Assets/keysList.json';
 
 function ChildKeys({ k,setWords }) {
   return (

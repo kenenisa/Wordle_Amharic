@@ -3,12 +3,11 @@ import './Grid.css';
 
 import GridRow from './GridRow/GridRow';
 //
-function Grid({words,final}) {
+function Grid({ words, final, evaluated }) {
   const rowSize = [0, 0, 0, 0, 0]
-  console.log(words);
   return (
     <div className="grid_wrapper">
-      {rowSize.map((k, i) => <GridRow key={i} word={words[i]} final={final[i]}/>)}
+      {rowSize.map((k, i) => <GridRow key={i} word={words[i]} final={final[i]} evaluated={evaluated[i]} />)}
     </div>
   );
 }
