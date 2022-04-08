@@ -38,13 +38,15 @@
     
 }
 .keys{
-    color: white;
-    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    border-radius: 0px;
+    border-style: none;
     background-color: #818384;
     padding: 0.3rem 0.6rem;
     margin: 5px;
     cursor: pointer;
     user-select: none;
+    font-size: 1rem;
 }
 .keys:hover{
     background-color: #585858;

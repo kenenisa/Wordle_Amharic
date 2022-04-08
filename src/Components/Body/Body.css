@@ -9,6 +9,12 @@
         place-items: center;
     }
 }
+@media screen and (max-width:500px) {
+    .body{
+        /* height: max-content; */
+        background-color: aquamarine;
+    }
+}
 .message{
     background-color: white !important;
     color:  black!important;

@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function Keys({ k, changeKey }) {
-    const handleClick = () => {
-        changeKey(k)
-    }
-    return (
-        <div className="keys" onClick={handleClick}>{k}</div>
-    )
+  const handleClick = () => {
+    changeKey(k);
+  };
+  return (
+    <button className="keys" onClick={handleClick}>
+      {k}
+    </button>
+  );
 }
 
-export default Keys
+export default Keys;
