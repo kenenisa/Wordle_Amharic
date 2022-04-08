@@ -19,7 +19,6 @@ function Body() {
         if(!replace){
           temp[rowCount].push(k);
         }else{
-          console.log('here');
           const tr = temp[rowCount]
           tr[tr.length - 1] = k
           temp[rowCount] = tr
@@ -32,7 +31,9 @@ function Body() {
     }
   };
   console.log(process.env.REACT_APP_REMOTE_HOST);
-
+  const delay = (time) => {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
   const handleSubmit = async () => {
     if (words[rowCount].length === 5) {
       const evf = await fetch(
@@ -41,9 +42,7 @@ function Body() {
           words[rowCount].join("")
       ).then((e) => e.json());
       const ev = evf.result;
-      function delay(time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
-      }
+      
       if (ev) {
         const temp = final;
         temp[rowCount] = true;
