@@ -19,6 +19,8 @@ function Body() {
   const initEvaluated = localStorage.evaluated ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
   const [evaluated, setEvaluated] = useState(initEvaluated);
   const [x, setX] = useState(0);
+  const [finished, setFinished] = useState(false);
+
   useEffect(() => {
     localStorage.words = JSON.stringify(words)
     localStorage.evaluated = JSON.stringify(evaluated)
@@ -26,22 +28,25 @@ function Body() {
     localStorage.final = JSON.stringify(final)
   }, [x])
   const changeWords = (k, replace = false) => {
-    const temp = words;
-    if (temp[rowCount].length < 5 || replace) {
-      if (words[rowCount].length) {
-        if (!replace) {
-          temp[rowCount].push(k);
+    if (!finished) {
+      const temp = words;
+      if (temp[rowCount].length < 5 || replace) {
+        if (words[rowCount].length) {
+          if (!replace) {
+            temp[rowCount].push(k);
+          } else {
+            const tr = temp[rowCount]
+            tr[tr.length - 1] = k
+            temp[rowCount] = tr
+          }
         } else {
-          const tr = temp[rowCount]
-          tr[tr.length - 1] = k
-          temp[rowCount] = tr
+          temp[rowCount] = [k];
         }
-      } else {
-        temp[rowCount] = [k];
+        setWords(temp);
+        setX(x + 1);
       }
-      setWords(temp);
-      setX(x + 1);
     }
+
   };
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -75,6 +80,7 @@ function Body() {
         }
       }
       if (ev.join("") === [4, 4, 4, 4, 4].join("")) {
+        setFinished(true)
         delay(1000).then(() =>
           toast("ጀግና", {
             className: "message",
@@ -113,13 +119,11 @@ function Body() {
         />
         <Grid words={words} final={final} evaluated={evaluated} />
       </div>
-      <div className="keyboard">
         <Keyboard
           setWords={changeWords}
           handleSubmit={handleSubmit}
           handleBackspace={handleBackspace}
         />
-      </div>
     </React.Fragment>
   );
 }

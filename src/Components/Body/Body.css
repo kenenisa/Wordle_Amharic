@@ -1,18 +1,5 @@
-@media (max-width: 990px) {
-    body{
-        align-items: center;
-        width: 80%;
-        position: absolute;
-    
-        height: 100%;
-        display: grid;
-        place-items: center;
-    }
-}
-@media screen and (max-width:500px) {
-    .body{
-        /* height: max-content; */
-    }
+body{
+    overflow-x: hidden;
 }
 .message{
     background-color: white !important;

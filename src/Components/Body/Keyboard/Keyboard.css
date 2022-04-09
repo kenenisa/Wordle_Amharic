@@ -1,61 +1,75 @@
-.keyboard{
-    position: relative;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: row; 
-    margin: 5px;
+.keyboards {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1rem;
+  width: 50%;
 }
-@media screen and (max-width:500px) {
-.keyboard{
-    width: 98%;
+.keyboard {
+  position: relative;
+  left: 0;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+  margin: 5px;
 }
-}
-.keyboard .actions{
-    position:absolute;
-    bottom:0;
-    left:50%;
-    transform: translateX(-50%);
-    width:30rem;
-    margin:auto;
-    background: blue;
-    z-index:1;
-    user-select: none;
-}
-.keyboard .actions div{
-    display: inline-block;
-}
-
-.keyboard.leave-space{
-    top:-0.5rem;
-    height: 3rem;
-    margin-bottom: -0.5rem;
-}
-.keys{
+.keys {
     color: rgb(255, 255, 255);
     border-radius: 0px;
     border-style: none;
     background-color: #818384;
-    padding: 0.3rem 0.6rem;
+    padding: 2.5% 4%;
     margin: 5px;
     cursor: pointer;
     user-select: none;
     font-size: 1rem;
     border-radius: 3px;
+  }
+@media screen and (min-width: 500px) {
+  .keyboards {
+    width: 20rem;
+    bottom:5%;
+  }
 }
-.keys:hover{
-    background-color: #585858;
+@media screen and (max-width: 400px) {
+    .keyboards {
+      bottom: 15%;
+    }
+  }
+@media screen and (max-width: 360px) {
+  .keyboards {
+    width: 35%;
+  }
 }
-.keyboard button.a{
-    height: 2rem !important;
-    background: #393e3f;
+@media screen and (max-width: 280px) {
+  .keyboards {
+    width: 30%;
+  }
+  .keys {
+    padding: 0.25rem 0.3rem;
+    margin: 4px;
+  }
 }
-.keyboard button.a img{
-    margin-top: -0.1rem;
+.keyboard.leave-space {
+  top: -0.5rem;
+  height: 3rem;
+  margin-bottom: -0.5rem;
 }
-@media screen and (max-width:500px){
+
+.keys:hover {
+  background-color: #585858;
+}
+.keyboard button.a {
+  height: 2rem !important;
+  background: #393e3f;
+}
+.keyboard button.a img {
+  margin-top: -0.1rem;
+}
+/* @media screen and (max-width:500px){
 .keyboard{
     max-width:100%;
 }
-}
+} */
