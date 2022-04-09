@@ -2,7 +2,6 @@ import React from "react";
 import "./GridRow.css";
 //
 function Grid_row({ word, final, evaluated }) {
-  console.log(evaluated);
   const itemType = (val) => {
     if (evaluated) {
       const ev = evaluated[val];

@@ -27,13 +27,13 @@
 
 }
 .grid_row.final .row_items.correctFamily{
-    background: #85c0f9;
-    border:3px solid #85c0f9;
+    background: #5c87af;
+    border:3px solid #5c87af;
 
 }
 .grid_row.final .row_items.correctFamilyWrongPlace{
-    background: #7e57c2;
-    border:3px solid #7e57c2;
+    background: #5a4e70;
+    border:3px solid #5a4e70;
 
 }
 .grid_row.final .row_items.incorrect{

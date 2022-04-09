@@ -7,6 +7,11 @@
     flex-direction: row; 
     margin: 5px;
 }
+@media screen and (max-width:500px) {
+.keyboard{
+    width: 98%;
+}
+}
 .keyboard .actions{
     position:absolute;
     bottom:0;

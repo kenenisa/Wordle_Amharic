@@ -12,57 +12,61 @@ module.exports = (tried) => {
         chosenWord = X.split('')
         fs.writeFileSync('./todaysWord.json', JSON.stringify({ Apr8: X }))
     }
-    const result = []
-    const spitPlace = (arr) => {
-        const place = []
-        arr.forEach(l => {
-            for (let i in alphabet) {
-                if (alphabet[i].find(x => x === l)) {
-                    place.push(i)
+    let result = []
+    if (wordList.find(word => word.word === tried.join(''))) {
+        const spitPlace = (arr) => {
+            const place = []
+            arr.forEach(l => {
+                for (let i in alphabet) {
+                    if (alphabet[i].find(x => x === l)) {
+                        place.push(i)
+                    }
                 }
-            }
-        })
-        return place
-    }
-    const chosenPlace = spitPlace(chosenWord)
-    const triedPlace = spitPlace(tried)
-    tried.forEach((t, i) => {
-        if (!t) return;
-        let val = 0
-        for (let j = 0; j < chosenWord.length; j++) {
-            if (t === chosenWord[j]) {
-                if (i === j) {
-                    val = 4
-                    chosenWord[j] = null
-                    break;
-                } else {
-                    val = 3
-                    chosenWord[j] = null
-                    break;
-                }
-            }
+            })
+            return place
         }
-        result[i] = val
-    })
-    triedPlace.forEach((t, i) => {
-        if (!t) return;
-        if (result[i] === 0) {
+        const chosenPlace = spitPlace(chosenWord)
+        const triedPlace = spitPlace(tried)
+        tried.forEach((t, i) => {
+            if (!t) return;
             let val = 0
-            for (let j = 0; j < chosenPlace.length; j++) {
-                if (t === chosenPlace[j] && chosenWord[j] !== null) {
+            for (let j = 0; j < chosenWord.length; j++) {
+                if (t === chosenWord[j]) {
                     if (i === j) {
-                        val = 2
-                        chosenPlace[j] = null
+                        val = 4
+                        chosenWord[j] = null
                         break;
                     } else {
-                        val = 1
-                        chosenPlace[j] = null
+                        val = 3
+                        chosenWord[j] = null
                         break;
                     }
                 }
             }
             result[i] = val
-        }
-    })
+        })
+        triedPlace.forEach((t, i) => {
+            if (!t) return;
+            if (result[i] === 0) {
+                let val = 0
+                for (let j = 0; j < chosenPlace.length; j++) {
+                    if (t === chosenPlace[j] && chosenWord[j] !== null) {
+                        if (i === j) {
+                            val = 2
+                            chosenPlace[j] = null
+                            break;
+                        } else {
+                            val = 1
+                            chosenPlace[j] = null
+                            break;
+                        }
+                    }
+                }
+                result[i] = val
+            }
+        })
+    } else {
+        result = [-1, -1, -1, -1, -1]
+    }
     return result
 }

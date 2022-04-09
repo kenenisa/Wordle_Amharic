@@ -7,18 +7,31 @@ import "react-toastify/dist/ReactToastify.css";
 import { wait } from "@testing-library/user-event/dist/utils";
 
 function Body() {
-  const [words, setWords] = useState([[], [], [], [], []]);
-  const [rowCount, setRowCount] = useState(0);
-  const [final, setFinal] = useState([]);
-  const [evaluated, setEvaluated] = useState([]);
+  const init = localStorage.words ? JSON.parse(localStorage.words) : [[], [], [], [], []]
+  const [words, setWords] = useState(init);
+
+  const initRowCount = localStorage.rowCount ? JSON.parse(localStorage.rowCount) : 0
+  const [rowCount, setRowCount] = useState(initRowCount);
+
+  const initFinal = localStorage.final ? JSON.parse(localStorage.final) : []
+  const [final, setFinal] = useState(initFinal);
+
+  const initEvaluated = localStorage.evaluated ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
+  const [evaluated, setEvaluated] = useState(initEvaluated);
   const [x, setX] = useState(0);
-  const changeWords = (k,replace=false) => {
+  useEffect(() => {
+    localStorage.words = JSON.stringify(words)
+    localStorage.evaluated = JSON.stringify(evaluated)
+    localStorage.rowCount = JSON.stringify(rowCount)
+    localStorage.final = JSON.stringify(final)
+  }, [x])
+  const changeWords = (k, replace = false) => {
     const temp = words;
     if (temp[rowCount].length < 5 || replace) {
       if (words[rowCount].length) {
-        if(!replace){
+        if (!replace) {
           temp[rowCount].push(k);
-        }else{
+        } else {
           const tr = temp[rowCount]
           tr[tr.length - 1] = k
           temp[rowCount] = tr
@@ -30,7 +43,6 @@ function Body() {
       setX(x + 1);
     }
   };
-  console.log(process.env.REACT_APP_REMOTE_HOST);
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
@@ -38,20 +50,29 @@ function Body() {
     if (words[rowCount].length === 5) {
       const evf = await fetch(
         process.env.REACT_APP_REMOTE_HOST +
-          "/evaluate?tried=" +
-          words[rowCount].join("")
+        "/evaluate?tried=" +
+        words[rowCount].join("")
       ).then((e) => e.json());
       const ev = evf.result;
-      
-      if (ev) {
-        const temp = final;
-        temp[rowCount] = true;
-        const evt = evaluated;
-        evt[rowCount] = ev;
-        setEvaluated(evt);
-        setFinal(temp);
-        setRowCount(rowCount + 1);
-        setX(x + 1);
+      if (ev.join("") === [-1, -1, -1, -1, -1].join("")) {
+        toast("የእናትህ ነው እሱ። አስተካክል!", {
+          className: "message",
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: false,
+        })
+      } else {
+        if (ev) {
+          const temp = final;
+          temp[rowCount] = true;
+          const evt = evaluated;
+          evt[rowCount] = ev;
+          setEvaluated(evt);
+          setFinal(temp);
+          setRowCount(rowCount + 1);
+          setX(x + 1);
+        }
       }
       if (ev.join("") === [4, 4, 4, 4, 4].join("")) {
         delay(1000).then(() =>
