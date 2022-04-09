@@ -37,20 +37,38 @@
     .keyboards {
       bottom: 15%;
     }
+    .keys{
+      padding: 0.25rem 0.35rem;
+    }
   }
 @media screen and (max-width: 360px) {
   .keyboards {
     width: 35%;
   }
 }
-@media screen and (max-width: 280px) {
+@media screen and (max-width: 310px) {
   .keyboards {
     width: 30%;
   }
   .keys {
-    padding: 0.25rem 0.3rem;
+    padding: 0.25rem 0.2rem;
     margin: 4px;
   }
+}
+@media screen and (max-width: 260px) {
+    .keyboards { 
+        transform: translateX(-35%);
+    } 
+}
+@media screen and (max-width: 230px) {
+    .keyboards { 
+        transform: translateX(-20%);
+    } 
+}
+@media screen and (max-width: 200px) {
+    .keyboards { 
+        transform: translateX(0%);
+    } 
 }
 .keyboard.leave-space {
   top: -0.5rem;
