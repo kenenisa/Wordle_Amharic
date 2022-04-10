@@ -16,6 +16,7 @@
   margin: 5px;
 }
 .keys {
+    position: relative;
     color: rgb(255, 255, 255);
     border-radius: 0px;
     border-style: none;
@@ -27,6 +28,16 @@
     font-size: 1rem;
     border-radius: 3px;
   }
+.keys span{
+    position:absolute;
+    right:0.15rem;
+    top:0.15rem;
+    width:0.35rem;
+    height:0.35rem;
+    z-index:1;
+    margin-left:0.2rem;
+    border-radius: 50%;
+}
 @media screen and (min-width: 500px) {
   .keyboards {
     width: 20rem;
@@ -91,3 +102,22 @@
     max-width:100%;
 }
 } */
+.keyboards .keys.correct{
+    background: #538d4e;
+}
+.keyboards .keys.correctWrongPlace{
+    background: #b59f3b;
+}
+.keyboards .keys.correctFamily{
+    background: #5c87af;
+}
+.keyboards .keys.correctFamilyWrongPlace{
+    background: #5a4e70;
+}
+.keyboards .keys.incorrect{
+    background: #3a3a3c;
+}
+.keys span.i4{background: #538d4e;}
+.keys span.i3{background: #b59f3b;}
+.keys span.i2{background: #5c87af;}
+.keys span.i1{background: #5a4e70;}

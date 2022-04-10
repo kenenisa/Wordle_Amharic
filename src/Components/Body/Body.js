@@ -4,28 +4,32 @@ import Grid from "./Grid/Grid";
 import Keyboard from "./Keyboard/Keyboard";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { wait } from "@testing-library/user-event/dist/utils";
+
+import alphabet from './../../Assets/keysList.json'
 
 function Body() {
-  const init = localStorage.words ? JSON.parse(localStorage.words) : [[], [], [], [], []]
+  const init = !localStorage.words ? JSON.parse(localStorage.words) : [[], [], [], [], []]
   const [words, setWords] = useState(init);
 
-  const initRowCount = localStorage.rowCount ? JSON.parse(localStorage.rowCount) : 0
+  const initRowCount = !localStorage.rowCount ? JSON.parse(localStorage.rowCount) : 0
   const [rowCount, setRowCount] = useState(initRowCount);
 
-  const initFinal = localStorage.final ? JSON.parse(localStorage.final) : []
+  const initFinal = !localStorage.final ? JSON.parse(localStorage.final) : []
   const [final, setFinal] = useState(initFinal);
 
-  const initEvaluated = localStorage.evaluated ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
+  const initEvaluated = !localStorage.evaluated ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
   const [evaluated, setEvaluated] = useState(initEvaluated);
   const [x, setX] = useState(0);
   const [finished, setFinished] = useState(false);
+  const intiHighlight = !localStorage.highlight ? JSON.parse(localStorage.highlight) : {}
+  const [highlight, setHighlight] = useState(intiHighlight)
 
   useEffect(() => {
     localStorage.words = JSON.stringify(words)
     localStorage.evaluated = JSON.stringify(evaluated)
     localStorage.rowCount = JSON.stringify(rowCount)
     localStorage.final = JSON.stringify(final)
+    localStorage.highlight = JSON.stringify(highlight)
   }, [x])
   const changeWords = (k, replace = false) => {
     if (!finished) {
@@ -51,6 +55,25 @@ function Body() {
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   }
+  const toaster = (text) => {
+    toast(text, {
+      className: "message",
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: false,
+    })
+  }
+  const spitPlace = (l) => {
+    let place = l
+    for (let i in alphabet) {
+      if (alphabet[i].find(x => x === l)) {
+        place = i
+        break
+      }
+    }
+    return place
+  }
   const handleSubmit = async () => {
     if (words[rowCount].length === 5) {
       const evf = await fetch(
@@ -60,19 +83,35 @@ function Body() {
       ).then((e) => e.json());
       const ev = evf.result;
       if (ev.join("") === [-1, -1, -1, -1, -1].join("")) {
-        toast("የእናትህ ነው እሱ። አስተካክል!", {
-          className: "message",
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: false,
-        })
+        toaster("የእናትህ ነው እሱ። አስተካክል!")
       } else {
         if (ev) {
           const temp = final;
           temp[rowCount] = true;
           const evt = evaluated;
           evt[rowCount] = ev;
+          const th = highlight
+          words[rowCount].forEach((el, i) => {
+            if (th[el] !== undefined) {
+              th[el].ev = th[el].ev > ev[i] ? th[el].ev : ev[i]
+            } else {
+              th[el] = { ev: ev[i] }
+            }
+            if (!alphabet[el]) {
+              const sp = spitPlace(el)
+              console.log(sp);
+              if (th[sp] !== undefined) {
+                if (th[sp].ch) {
+                  th[sp].ch.push(ev[i])
+                } else {
+                  th[sp].ch = [ev[i]]
+                }
+              } else {
+                th[sp] = { ch: [ev[i]] }
+              }
+            }
+          });
+          setHighlight(th)
           setEvaluated(evt);
           setFinal(temp);
           setRowCount(rowCount + 1);
@@ -82,13 +121,7 @@ function Body() {
       if (ev.join("") === [4, 4, 4, 4, 4].join("")) {
         setFinished(true)
         delay(1000).then(() =>
-          toast("ጀግና", {
-            className: "message",
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: false,
-          })
+          toaster("ጀግና")
         );
       }
       // console.log(ev);
@@ -119,11 +152,12 @@ function Body() {
         />
         <Grid words={words} final={final} evaluated={evaluated} />
       </div>
-        <Keyboard
-          setWords={changeWords}
-          handleSubmit={handleSubmit}
-          handleBackspace={handleBackspace}
-        />
+      <Keyboard
+        setWords={changeWords}
+        handleSubmit={handleSubmit}
+        handleBackspace={handleBackspace}
+        highlight={highlight}
+      />
     </React.Fragment>
   );
 }

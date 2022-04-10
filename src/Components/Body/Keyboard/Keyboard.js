@@ -4,7 +4,7 @@ import "./Keyboard.css";
 import Keys from "./Keys/Keys";
 import check from "./../../../Assets/check.svg"
 import backspace from "./../../../Assets/backspace.svg"
-function Keyboard({ setWords, handleSubmit, handleBackspace }) {
+function Keyboard({ setWords, handleSubmit, handleBackspace,highlight }) {
   const [child, setChid] = useState(false);
   const changeChid = (k) => {
     setChid(k)
@@ -12,46 +12,46 @@ function Keyboard({ setWords, handleSubmit, handleBackspace }) {
   }
   return (
     <div className="keyboards">
-      <ChildKeys k={child} setWords={setWords} />
+      <ChildKeys k={child} setWords={setWords} highlight={highlight}/>
       <div className="keyboard first_row">
-        <Keys changeKey={changeChid} k="ሀ" />
-        <Keys changeKey={changeChid} k="ለ" />
-        <Keys changeKey={changeChid} k="መ" />
-        <Keys changeKey={changeChid} k="ረ" />
-        <Keys changeKey={changeChid} k="ሰ" />
-        <Keys changeKey={changeChid} k="ሸ" />
-        <Keys changeKey={changeChid} k="ቀ" />
-        <Keys changeKey={changeChid} k="በ" />
-        <Keys changeKey={changeChid} k="ተ" />
-        <Keys changeKey={changeChid} k="ቸ" />
-        <Keys changeKey={changeChid} k="ኀ" />
+        <Keys changeKey={changeChid} k="ሀ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ለ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="መ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ረ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ሰ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ሸ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ቀ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="በ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ተ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ቸ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ኀ" highlight={highlight}/>
       </div>
       <div className=" keyboard second_row">
-        <Keys changeKey={changeChid} k="ነ" />
-        <Keys changeKey={changeChid} k="ኘ" />
-        <Keys changeKey={changeChid} k="አ" />
-        <Keys changeKey={changeChid} k="ከ" />
-        {/* <Keys changeKey={changeChid} k="ኸ" /> */}
-        <Keys changeKey={changeChid} k="ሰ" />
-        <Keys changeKey={changeChid} k="ሸ" />
-        <Keys changeKey={changeChid} k="ወ" />
-        <Keys changeKey={changeChid} k="ዘ" />
-        <Keys changeKey={changeChid} k="ዠ" />
-        <Keys changeKey={changeChid} k="የ" />
-        <Keys changeKey={changeChid} k="ደ" />
+        <Keys changeKey={changeChid} k="ነ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ኘ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="አ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ከ" highlight={highlight}/>
+        {/* <Keys changeKey={changeChid} k="ኸ" highlight={highlight}/> */}
+        <Keys changeKey={changeChid} k="ሰ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ሸ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ወ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ዘ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ዠ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="የ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ደ" highlight={highlight}/>
       </div>
       <div className="keyboard third_row">
         <button className="keys e a" onClick={handleSubmit}>
           <img src={check} width="23"/>
         </button>
-        <Keys changeKey={changeChid} k="ጀ" />
-        <Keys changeKey={changeChid} k="ገ" />
-        <Keys changeKey={changeChid} k="ጠ" />
-        <Keys changeKey={changeChid} k="ጨ" />
-        <Keys changeKey={changeChid} k="ጰ" />
-        <Keys changeKey={changeChid} k="ፀ" />
-        <Keys changeKey={changeChid} k="ፈ" />
-        <Keys changeKey={changeChid} k="ፐ" />
+        <Keys changeKey={changeChid} k="ጀ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ገ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ጠ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ጨ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ጰ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ፀ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ፈ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ፐ" highlight={highlight}/>
         <button className="keys b a" onClick={handleBackspace}>
           <img src={backspace} width="23"/>
         </button>
