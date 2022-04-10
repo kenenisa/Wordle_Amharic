@@ -1,7 +1,7 @@
 const fs = require('fs')
 const alphabet = JSON.parse(fs.readFileSync('./output.json').toString())
 const data = JSON.parse(fs.readFileSync('./data.json').toString())
-const allWords = JSON.parse(fs.readFileSync('./data.json').toString())
+const allWords = JSON.parse(fs.readFileSync('./allWords.json').toString())
 const wordList = data.wordList;
 module.exports = (tried) => {
     const today = JSON.parse(fs.readFileSync('./todaysWord.json').toString()).Apr8
