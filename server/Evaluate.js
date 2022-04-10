@@ -10,7 +10,7 @@ module.exports = (tried) => {
     let chosenWord;
     if (today) {
         chosenWord = today.split('')
-    } else {
+    } else { 
         const X = wordList[Math.floor(Math.random() * wordList.length)].word;
         chosenWord = X.split('')
         fs.writeFileSync('./todaysWord.json', JSON.stringify({ [day]: X }))

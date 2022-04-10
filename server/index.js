@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const fs = require('fs')
 const evaluate = require('./Evaluate.js')
+const random = require('./RandomWords.js')
 
 
 const app = express()
@@ -16,8 +17,11 @@ app.get('/', (req, res) => {
 // 0 incorrect word
 app.get('/evaluate', (req, res) => {
     const tried = req.query.tried.split('');
-    res.header("Access-Control-Allow-Origin", "*")
     res.json({ result:evaluate(tried) })
+})
+app.get('/random',(req,res)=>{
+    const l = Number(req.query.limit)
+    res.json(random(l))
 })
 
 

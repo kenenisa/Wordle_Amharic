@@ -24,7 +24,6 @@ function Keys({ k, changeKey, highlight }) {
   return (
     <button className={`keys ${highlightType()}`} onClick={handleClick}>
       {ch.map((e,i) => <span className={'i' + e} key={i}></span>)}
-      <span></span>
       {k}
     </button>
   );

@@ -6,6 +6,7 @@ import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import alphabet from './../../Assets/keysList.json'
+import Hints from "./Hints/Hints";
 
 function Body() {
   const init = !localStorage.words ? JSON.parse(localStorage.words) : [[], [], [], [], []]
@@ -103,7 +104,6 @@ function Body() {
             }
             if (!alphabet[el]) {
               const sp = spitPlace(el)
-              console.log(sp);
               if (th[sp] !== undefined) {
                 if (th[sp].ch) {
                   th[sp].ch.push(ev[i])
@@ -163,6 +163,7 @@ function Body() {
         highlight={highlight}
 
       />
+      <Hints rowCount={rowCount}/>
     </React.Fragment>
   );
 }

@@ -1,0 +1,21 @@
+.hints{
+    color:white;
+    margin-bottom:5rem;
+    position: relative;
+    top:2rem;
+    left:35%;
+    transform: translateX(-50%);
+    width:15rem;
+    /* border:1px solid red; */
+    padding-bottom:5rem;
+}
+.hints summary{
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.hints ol{
+    position: relative;
+    top:0.25rem;
+    left:3rem;
+}
