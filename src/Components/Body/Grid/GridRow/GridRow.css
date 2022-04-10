@@ -1,42 +1,78 @@
-@keyframes flip{
-    0%{
-        transform: rotateY(90deg);
-    }
-    
-    100%{
-        transform: rotateY(0deg);
-        opacity: 1;
-    }
-}
-.grid_row.final .row_items{
-    opacity: 0;
-    animation: flip 1s forwards;
-}
-.grid_row.final .row_items.a0{animation-delay: 250ms;}
-.grid_row.final .row_items.a1{animation-delay: 500ms;}
-.grid_row.final .row_items.a2{animation-delay: 750ms;}
-.grid_row.final .row_items.a3{animation-delay: 1000ms;}
-.grid_row.final .row_items.a4{animation-delay: 1250ms;}
-.grid_row.final .row_items.correct{
-    background: #538d4e;
-    border:3px solid #538d4e;
-}
-.grid_row.final .row_items.correctWrongPlace{
-    background: #b59f3b;
-    border:3px solid #b59f3b;
+@keyframes flip {
+  0% {
+    transform: rotateY(90deg);
+  }
 
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
 }
-.grid_row.final .row_items.correctFamily{
-    background: #5c87af;
-    border:3px solid #5c87af;
+.grid_row.final .row_items {
+  opacity: 0;
+  animation: flip 1s forwards;
+}
+.grid_row.final .row_items.a0 {
+  animation-delay: 250ms;
+}
+.grid_row.final .row_items.a1 {
+  animation-delay: 500ms;
+}
+.grid_row.final .row_items.a2 {
+  animation-delay: 750ms;
+}
+.grid_row.final .row_items.a3 {
+  animation-delay: 1000ms;
+}
+.grid_row.final .row_items.a4 {
+  animation-delay: 1250ms;
+}
+.grid_row.final .row_items.correct {
+  background: #538d4e;
+  border: 3px solid #538d4e;
+}
+.grid_row.final .row_items.correctWrongPlace {
+  background: #b59f3b;
+  border: 3px solid #b59f3b;
+}
+.grid_row.final .row_items.correctFamily {
+  background: #5c87af;
+  border: 3px solid #5c87af;
+}
+.grid_row.final .row_items.correctFamilyWrongPlace {
+  background: #5a4e70;
+  border: 3px solid #5a4e70;
+}
+.grid_row.final .row_items.incorrect {
+  background: #3a3a3c;
+  border: 3px solid #3a3a3c;
+}
 
-}
-.grid_row.final .row_items.correctFamilyWrongPlace{
-    background: #5a4e70;
-    border:3px solid #5a4e70;
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
 
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
-.grid_row.final .row_items.incorrect{
-    background: #3a3a3c;
-    border:3px solid #3a3a3c;
+.grid_row.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }

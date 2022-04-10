@@ -1,7 +1,7 @@
 import React from "react";
 import "./GridRow.css";
 //
-function Grid_row({ word, final, evaluated }) {
+function Grid_row({ row, word, final, evaluated, shake }) {
   const itemType = (val) => {
     if (evaluated) {
       const ev = evaluated[val];
@@ -18,7 +18,7 @@ function Grid_row({ word, final, evaluated }) {
     return "a" + val;
   };
   return (
-    <div className={`grid_row ${final && "final"}`}>
+    <div className={`grid_row ${final && "final"} ${row === shake ? 'shake':''}`}>
       <div className={`row_items ${itemType(0)} ${aD(0)}`}>
         {word[0] ? word[0] : ""}
       </div>

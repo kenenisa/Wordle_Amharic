@@ -23,7 +23,7 @@ function Body() {
   const [finished, setFinished] = useState(false);
   const intiHighlight = !localStorage.highlight ? JSON.parse(localStorage.highlight) : {}
   const [highlight, setHighlight] = useState(intiHighlight)
-
+  const [shake, setShake] = useState(false);
   useEffect(() => {
     localStorage.words = JSON.stringify(words)
     localStorage.evaluated = JSON.stringify(evaluated)
@@ -84,6 +84,10 @@ function Body() {
       const ev = evf.result;
       if (ev.join("") === [-1, -1, -1, -1, -1].join("")) {
         toaster("የእናትህ ነው እሱ። አስተካክል!")
+        setShake(rowCount)
+        setTimeout(() => {
+          setShake(false)
+        }, 1000)
       } else {
         if (ev) {
           const temp = final;
@@ -150,13 +154,14 @@ function Body() {
           draggable
           pauseOnHover
         />
-        <Grid words={words} final={final} evaluated={evaluated} />
+        <Grid words={words} final={final} evaluated={evaluated} shake={shake} />
       </div>
       <Keyboard
         setWords={changeWords}
         handleSubmit={handleSubmit}
         handleBackspace={handleBackspace}
         highlight={highlight}
+
       />
     </React.Fragment>
   );
