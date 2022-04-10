@@ -4,14 +4,16 @@ const data = JSON.parse(fs.readFileSync('./data.json').toString())
 const allWords = JSON.parse(fs.readFileSync('./allWords.json').toString())
 const wordList = data.wordList;
 module.exports = (tried) => {
-    const today = JSON.parse(fs.readFileSync('./todaysWord.json').toString()).Apr8
+    const date = new Date().toDateString().split(' ')
+    const day = date[1]+date[2]
+    const today = JSON.parse(fs.readFileSync('./todaysWord.json').toString())[day]
     let chosenWord;
     if (today) {
         chosenWord = today.split('')
     } else {
         const X = wordList[Math.floor(Math.random() * wordList.length)].word;
         chosenWord = X.split('')
-        fs.writeFileSync('./todaysWord.json', JSON.stringify({ Apr8: X }))
+        fs.writeFileSync('./todaysWord.json', JSON.stringify({ [day]: X }))
     }
     let result = []
     if (allWords.wordList.find(word => word.word === tried.join(''))) {
