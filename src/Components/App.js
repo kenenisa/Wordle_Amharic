@@ -1,6 +1,7 @@
-import React from 'react'
+import React from "react";
 import "./App.css";
-import Body from './Body/Body';
+import Body from "./Body/Body";
+// import ProgressBar from "./Body/Modal/ProgressBar/ProgressBar";
 function App() {
   return (
     <div className="App">
@@ -8,7 +9,8 @@ function App() {
         <h3>ወርድል</h3>
       </div>
       <div className="body">
-        <Body/>
+        <Body />
+        {/* <ProgressBar /> */}
       </div>
     </div>
   );
