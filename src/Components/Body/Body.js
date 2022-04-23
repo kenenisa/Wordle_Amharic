@@ -9,20 +9,20 @@ import alphabet from './../../Assets/keysList.json'
 import Hints from "./Hints/Hints";
 
 function Body() {
-  const init = !localStorage.words ? JSON.parse(localStorage.words) : [[], [], [], [], []]
+  const init = false ? JSON.parse(localStorage.words) : [[], [], [], [], [],[]]
   const [words, setWords] = useState(init);
 
-  const initRowCount = !localStorage.rowCount ? JSON.parse(localStorage.rowCount) : 0
+  const initRowCount = false ? JSON.parse(localStorage.rowCount) : 0
   const [rowCount, setRowCount] = useState(initRowCount);
 
-  const initFinal = !localStorage.final ? JSON.parse(localStorage.final) : []
+  const initFinal = false ? JSON.parse(localStorage.final) : []
   const [final, setFinal] = useState(initFinal);
 
-  const initEvaluated = !localStorage.evaluated ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
+  const initEvaluated = false ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
   const [evaluated, setEvaluated] = useState(initEvaluated);
   const [x, setX] = useState(0);
   const [finished, setFinished] = useState(false);
-  const intiHighlight = !localStorage.highlight ? JSON.parse(localStorage.highlight) : {}
+  const intiHighlight = false ? JSON.parse(localStorage.highlight) : {}
   const [highlight, setHighlight] = useState(intiHighlight)
   const [shake, setShake] = useState(false);
   useEffect(() => {
