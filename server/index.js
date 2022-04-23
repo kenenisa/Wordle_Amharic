@@ -17,17 +17,25 @@ app.get('/', (req, res) => {
 // 0 incorrect word
 app.get('/evaluate', (req, res) => {
     const tried = req.query.tried.split('');
-    res.json({ result:evaluate(tried) })
+    const col = req.query.col
+    evaluate(tried, col ? col : 5).then(result=>{
+        console.log('Eval',result);
+        res.json({ result })
+    })
 })
-app.get('/random',(req,res)=>{
+app.get('/random', (req, res) => {
     const l = Number(req.query.limit)
-    res.json(random(l))
+    const col = req.query.col
+    random(l, col ? col : 5).then(result=>{
+        console.log('Random',result);
+        res.json(result)
+    })
 })
 
 
 
 
 const PORT = 5000
-app.listen(PORT,  () => {
+app.listen(PORT, () => {
     console.log('Server up and running at localhost:' + PORT);
 })

@@ -7,7 +7,7 @@ function Hints({rowCount}) {
         fetch(process.env.REACT_APP_REMOTE_HOST + '/random?limit=' + (25 / (rowCount + 1)))
             .then(e => e.json())
             .then(e => {
-                setHintList(e)
+                if(e) setHintList(e)
             })
     }, [rowCount])
     return (
