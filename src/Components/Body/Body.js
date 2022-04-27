@@ -11,6 +11,7 @@ import Modal from "./Modal/Modal";
 import ModalComp from "./Modal/Modal";
 
 function Body() {
+<<<<<<< HEAD
   const [modalStatus, setmodalStatus] = useState(false);
   const init = localStorage.words
     ? JSON.parse(localStorage.words)
@@ -33,6 +34,23 @@ function Body() {
     ? JSON.parse(localStorage.highlight)
     : {};
   const [highlight, setHighlight] = useState(intiHighlight);
+=======
+  const init = false ? JSON.parse(localStorage.words) : [[], [], [], [], [],[]]
+  const [words, setWords] = useState(init);
+
+  const initRowCount = false ? JSON.parse(localStorage.rowCount) : 0
+  const [rowCount, setRowCount] = useState(initRowCount);
+
+  const initFinal = false ? JSON.parse(localStorage.final) : []
+  const [final, setFinal] = useState(initFinal);
+
+  const initEvaluated = false ? JSON.parse(localStorage.evaluated) : [[], [], [], [], []]
+  const [evaluated, setEvaluated] = useState(initEvaluated);
+  const [x, setX] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const intiHighlight = false ? JSON.parse(localStorage.highlight) : {}
+  const [highlight, setHighlight] = useState(intiHighlight)
+>>>>>>> 81a3e650e4871487f50f6b17c71fd1efbac64870
   const [shake, setShake] = useState(false);
   useEffect(() => {
     localStorage.words = JSON.stringify(words);

@@ -31,20 +31,17 @@ function Keyboard({ setWords, handleSubmit, handleBackspace,highlight }) {
         <Keys changeKey={changeChid} k="ኘ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="አ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ከ" highlight={highlight}/>
-        {/* <Keys changeKey={changeChid} k="ኸ" highlight={highlight}/> */}
-        <Keys changeKey={changeChid} k="ሰ" highlight={highlight}/>
-        <Keys changeKey={changeChid} k="ሸ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ወ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ዘ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ዠ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="የ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ደ" highlight={highlight}/>
+        <Keys changeKey={changeChid} k="ጀ" highlight={highlight}/>
       </div>
       <div className="keyboard third_row">
         <button className="keys e a" onClick={handleSubmit}>
           <img src={check} width="23"/>
         </button>
-        <Keys changeKey={changeChid} k="ጀ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ገ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ጠ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ጨ" highlight={highlight}/>

@@ -7,29 +7,32 @@
     place-items: center;
     margin: 0.25rem;
 }
-
+/* .grid_wrapper div{
+    border:1px solid red
+} */
 .grid_row {
     /* background-color: aqua; */
     display: flex;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .row_items{
     color: white;
     font-weight: 700;
-    border: 3px solid #3A3A3C;
-    margin: 0.5rem;
-    width: 3rem;
-    height: 3rem;
+    border: 2px solid #3A3A3C;
+    margin: 0.1rem ;
+    width: 2.25rem;
+    height: 2.25rem;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    padding:0.7rem;
 }
 
 @media screen and (max-width:500px) {
     .row_items{
-        width: 2rem;
-        height: 2rem;
+        width: 2.1rem;
+        height: 2.1rem;
         
     }
 }
