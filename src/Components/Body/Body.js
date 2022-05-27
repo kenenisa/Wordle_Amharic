@@ -11,30 +11,8 @@ import Hints from "./Hints/Hints";
 import ModalComp from "./Modal/Modal";
 
 function Body() {
-  // <<<<<<< HEAD
   const [modalStatus, setmodalStatus] = useState(false);
-  //   const init = localStorage.words
-  //     ? JSON.parse(localStorage.words)
-  //     : [[], [], [], [], []];
-  //   const [words, setWords] = useState(init);
-  //   const initRowCount = localStorage.rowCount
-  //     ? JSON.parse(localStorage.rowCount)
-  //     : 0;
-  //   const [rowCount, setRowCount] = useState(initRowCount);
-
-  //   const initFinal = localStorage.final ? JSON.parse(localStorage.final) : [];
-  //   const [final, setFinal] = useState(initFinal);
-  //   const initEvaluated = localStorage.evaluated
-  //     ? JSON.parse(localStorage.evaluated)
-  //     : [[], [], [], [], []];
-  //   const [evaluated, setEvaluated] = useState(initEvaluated);
-  //   const [x, setX] = useState(0);
-  //   const [finished, setFinished] = useState(false);
-  //   const intiHighlight = localStorage.highlight
-  //     ? JSON.parse(localStorage.highlight)
-  //     : {};
-  //   const [highlight, setHighlight] = useState(intiHighlight);
-  // =======
+  
   const init = false
     ? JSON.parse(localStorage.words)
     : [[], [], [], [], [], []];
@@ -54,7 +32,6 @@ function Body() {
   const [finished, setFinished] = useState(false);
   const intiHighlight = false ? JSON.parse(localStorage.highlight) : {};
   const [highlight, setHighlight] = useState(intiHighlight);
-  // >>>>>>> 81a3e650e4871487f50f6b17c71fd1efbac64870
   const [shake, setShake] = useState(false);
   useEffect(() => {
     localStorage.words = JSON.stringify(words);
@@ -62,7 +39,7 @@ function Body() {
     localStorage.rowCount = JSON.stringify(rowCount);
     localStorage.final = JSON.stringify(final);
     localStorage.highlight = JSON.stringify(highlight);
-  }, [x]);
+  }, [x, words, evaluated, rowCount, highlight, final]);
   const changeWords = (k, replace = false) => {
     if (!finished) {
       const temp = words;
@@ -193,7 +170,14 @@ function Body() {
           draggable
           pauseOnHover
         />
-        <Grid words={words} final={final} evaluated={evaluated} shake={shake} />
+        <Grid
+          words={words}
+          final={final}
+          evaluated={evaluated}
+          shake={shake}
+          loading={loading}
+          col={col}
+        />
         <ModalComp modalIs={modalStatus} />
       </div>
       <Keyboard
@@ -202,7 +186,7 @@ function Body() {
         handleBackspace={handleBackspace}
         highlight={highlight}
       />
-      <Hints rowCount={rowCount} />
+      <Hints rowCount={rowCount} col={col}/>
     </React.Fragment>
   );
 }

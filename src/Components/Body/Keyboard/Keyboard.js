@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ChildKeys from "./ChildKeys/ChildKeys";
 import "./Keyboard.css";
 import Keys from "./Keys/Keys";
@@ -40,7 +40,7 @@ function Keyboard({ setWords, handleSubmit, handleBackspace,highlight }) {
       </div>
       <div className="keyboard third_row">
         <button className="keys e a" onClick={handleSubmit}>
-          <img src={check} width="23"/>
+          <img src={check} width="23" alt="check"/>
         </button>
         <Keys changeKey={changeChid} k="ገ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ጠ" highlight={highlight}/>
@@ -50,7 +50,7 @@ function Keyboard({ setWords, handleSubmit, handleBackspace,highlight }) {
         <Keys changeKey={changeChid} k="ፈ" highlight={highlight}/>
         <Keys changeKey={changeChid} k="ፐ" highlight={highlight}/>
         <button className="keys b a" onClick={handleBackspace}>
-          <img src={backspace} width="23"/>
+          <img src={backspace} width="23" alt="delete"/>
         </button>
       </div>
       <div className="actions">

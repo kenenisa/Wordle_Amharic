@@ -23,9 +23,45 @@ body {
 .header {
   background-color: #121213;
   color: white;
-  font-size: 2rem;
   letter-spacing: 2px;
   text-align: center;
   border-bottom: 0.5px solid #3A3A3C;
-  
+  align-content: center;
 }
+.header h3{
+  font-size: 2rem;
+}
+.header .col-amount{
+  width:6rem;
+  
+  display: flex;
+  flex-direction: row;
+  height:2rem;
+  border-radius: 10px;
+  overflow: hidden;
+  margin:auto;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  /* background-color: red; */
+}
+.header .col-amount .col-box{
+  flex:1;
+  display: inline-block;
+  background:rgba(68, 68, 68, 0.26);
+}
+.header .col-amount .col-box.selected{
+  background:rgb(97, 97, 97);
+}
+.header .col-amount .col-box span{
+  position: relative;
+  top:0.4rem;
+  width:0.15rem;
+  height:0.05rem;
+  background:rgb(192, 192, 192);
+  margin:2px;
+  padding:0.17rem;
+}
+.header .col-amount .col-box:first-child{
+  border-right:1px solid gray;
+}
+

@@ -1,7 +1,8 @@
 import React from "react";
 import "./GridRow.css";
+import Item from "./Item/Item";
 //
-function Grid_row({ row, word, final, evaluated, shake }) {
+function Grid_row({ row, word, final, evaluated, shake,loading,col }) {
   const itemType = (val) => {
     if (evaluated) {
       const ev = evaluated[val];
@@ -14,26 +15,18 @@ function Grid_row({ row, word, final, evaluated, shake }) {
     }
     return "";
   };
+
   const aD = (val) => {
     return "a" + val;
   };
+  const column = []
+  for(let i = 0; i < col;i++){
+    column.push(0)
+  }
   return (
-    <div className={`grid_row ${final && "final"} ${row === shake ? 'shake':''}`}>
-      <div className={`row_items ${itemType(0)} ${aD(0)}`}>
-        {word[0] ? word[0] : ""}
-      </div>
-      <div className={`row_items ${itemType(1)} ${aD(1)}`}>
-        {word[1] ? word[1] : ""}
-      </div>
-      <div className={`row_items ${itemType(2)} ${aD(2)}`}>
-        {word[2] ? word[2] : ""}
-      </div>
-      <div className={`row_items ${itemType(3)} ${aD(3)}`}>
-        {word[3] ? word[3] : ""}
-      </div>
-      <div className={`row_items ${itemType(4)} ${aD(4)}`}>
-        {word[4] ? word[4] : ""}
-      </div>
+    <div className={`grid_row row-${row} ${final ? "final":''} ${row === shake ? 'shake' : ''}`}>
+      {column.map((v, key) => <Item pos={key} word={word} itemType={itemType} aD={aD} key={key} />)}
+
     </div>
   );
 }

@@ -2,7 +2,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  top: 1rem;
+  top: 0.5rem;
   width: 50%;
 }
 .keyboard {
@@ -20,7 +20,7 @@
   color: rgb(255, 255, 255);
   border-radius: 0px;
   border-style: none;
-  background-color: #4f5050;
+  background-color: #747677;
   padding: 2.5% 4%;
   margin: 5px;
   cursor: pointer;
@@ -32,8 +32,8 @@
   position: absolute;
   right: 0.15rem;
   top: 0.15rem;
-  width: 0.3rem;
-  height: 0.3rem;
+  width: 0.4rem;
+  height: 0.4rem;
   z-index: 1;
   margin-left: 0.2rem;
   border-radius: 50%;
@@ -43,9 +43,6 @@
     width: 20rem;
     bottom: 5%;
   }
-  .Modal {
-    width: 77vh;
-  }
 }
 @media screen and (max-width: 400px) {
   .keyboards {
@@ -53,10 +50,6 @@
   }
   .keys {
     padding: 0.25rem 0.35rem;
-  }
-  .Modal {
-    width: 50vh;
-    max-height: 80vh;
   }
 }
 @media screen and (max-width: 360px) {
@@ -138,4 +131,7 @@
 }
 .keys span.i1 {
   background: #5a4e70;
+}
+.keys span.i0 {
+  background: #3a3a3c;
 }

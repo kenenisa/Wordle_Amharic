@@ -11,6 +11,11 @@ function Keys({ k, changeKey, highlight }) {
   };
   const highlightType = () => {
     if (val) {
+      if(val.ch){
+        if(val.ch.find(e=>e==0) !== undefined){
+          return "incorrect"; // if it's children are incorrect
+        }
+      }
       val = val.ev
       if (val === 4) return "correct";
       if (val === 3) return "correctWrongPlace";
@@ -20,10 +25,11 @@ function Keys({ k, changeKey, highlight }) {
     }
     return ''
   }
+  
 
   return (
-    <button className={`keys ${highlightType()}`} onClick={handleClick}>
-      {ch.map((e,i) => <span className={'i' + e} key={i}></span>)}
+    <button className={`keys ${highlightType()} `} onClick={handleClick}>
+      {ch.map((e, i) => <span className={'i' + e} key={i}></span>)}
       {k}
     </button>
   );

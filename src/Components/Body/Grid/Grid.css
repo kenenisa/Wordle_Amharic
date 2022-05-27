@@ -3,19 +3,44 @@
 /* body color : #121213 */
 
 .grid_wrapper {
+    position:relative;
     display: grid;
     place-items: center;
     margin: 0.25rem;
+    height:24.5rem;
+    justify-content: center;
 }
 /* .grid_wrapper div{
     border:1px solid red
 } */
 .grid_row {
     /* background-color: aqua; */
+    position: absolute;
+    top:0;
     display: flex;
     font-size: 2.5rem;
 }
-
+.grid_row.row-1 {
+    top:4.1rem;
+}
+.grid_row.row-2 {
+    top:calc(4.1rem * 2);
+}
+.grid_row.row-3 {
+    top:calc(4.1rem * 3);
+}
+.grid_row.row-4 {
+    top:calc(4.1rem * 4);
+}
+.grid_row.row-5 {
+    top:calc(4.1rem * 5);
+}
+.grid_row.row-6 {
+    top:calc(4.1rem * 6);
+}
+.grid_row.row-7 {
+    top:calc(4.1rem * 7);
+}
 .row_items{
     color: white;
     font-weight: 700;
