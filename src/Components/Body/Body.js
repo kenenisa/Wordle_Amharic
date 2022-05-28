@@ -10,7 +10,7 @@ import Hints from "./Hints/Hints";
 // import Modal from "./Modal/Modal";
 import ModalComp from "./Modal/Modal";
 
-function Body() {
+function Body({col}) {
   const [modalStatus, setmodalStatus] = useState(false);
   
   const init = false
@@ -175,7 +175,6 @@ function Body() {
           final={final}
           evaluated={evaluated}
           shake={shake}
-          loading={loading}
           col={col}
         />
         <ModalComp modalIs={modalStatus} />
