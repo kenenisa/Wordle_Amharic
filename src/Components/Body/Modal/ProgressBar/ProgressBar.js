@@ -1,7 +1,10 @@
 import React from "react";
 import "./ProgressBar.css";
 
-function ProgressBar({ progress, row, totalPlayed,today }) {
+function ProgressBar({ progress, row, totalPlayed, today }) {
+  if (today[row]) {
+    progress += 1;
+  }
   const percent = (progress * 100) / totalPlayed;
   return (
     <div>
@@ -12,7 +15,7 @@ function ProgressBar({ progress, row, totalPlayed,today }) {
         <div className="outerRight" style={{ width: percent + "%" }}>
           <div className="inner" />
           <div className="innerRight"></div>
-          <div className={`innerLeft ${today[row] && 'today'}`}>
+          <div className={`innerLeft ${today[row] && "today"}`}>
             <p>{progress}</p>
           </div>
         </div>

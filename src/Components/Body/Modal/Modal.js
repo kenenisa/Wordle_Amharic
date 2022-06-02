@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
+import './Modal.css'
 import Modal from "react-modal";
 import { gameData } from "../../../Utils/progress";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import Timer from "./Timer/Timer";
 
 Modal.setAppElement("#root");
 function ModalComp({ modalStatus, setModalStatus }) {
@@ -64,6 +65,15 @@ function ModalComp({ modalStatus, setModalStatus }) {
                 today={data.today}
               />
             ))}
+          </div>
+          <div className="bottom-area">
+            <div className="time">
+              <p>Next in</p>
+              <Timer/>
+            </div>
+            <div className="share">
+              <button className="share-btn">SHARE</button>
+            </div>
           </div>
         </div>
       </Modal>
