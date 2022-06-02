@@ -7,12 +7,14 @@ function App() {
     localStorage.col = val;
     setCol(val);
   };
-  useEffect(()=>{
-
-    fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord")
-    .then((e) => e.json())
-    .then((e) => (window.pw = e));
-  },[])
+  useEffect(() => {
+    fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord?col=" + col)
+      .then((e) => e.json())
+      .then((e) => {
+        window.pw = e;
+        console.log(window.pw.join(""));
+      });
+  }, [col]);
   return (
     <div className="App">
       <div className="header">

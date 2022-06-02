@@ -12,7 +12,7 @@ function Keys({ k, changeKey, highlight }) {
   const highlightType = () => {
     if (val) {
       if(val.ch){
-        if(val.ch.find(e=>e==0) !== undefined){
+        if(val.ch.find(e=>Number(e)===0) !== undefined){
           return "incorrect"; // if it's children are incorrect
         }
       }

@@ -6,13 +6,15 @@ import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import alphabet from "./../../Assets/keysList.json";
 import Hints from "./Hints/Hints";
+import Evaluator from "../../Utils/Evaluator";
 // import ProgressBar from "./Modal/ProgressBar/ProgressBar";
 // import Modal from "./Modal/Modal";
 import ModalComp from "./Modal/Modal";
+import { endGame, gameData } from "../../Utils/progress";
 
-function Body({col}) {
-  const [modalStatus, setmodalStatus] = useState(false);
-  
+function Body({ col }) {
+  const [modalStatus, setModalStatus] = useState(true);
+
   const init = false
     ? JSON.parse(localStorage.words)
     : [[], [], [], [], [], []];
@@ -43,7 +45,7 @@ function Body({col}) {
   const changeWords = (k, replace = false) => {
     if (!finished) {
       const temp = words;
-      if (temp[rowCount].length < 5 || replace) {
+      if (temp[rowCount].length < col || replace) {
         if (words[rowCount].length) {
           if (!replace) {
             temp[rowCount].push(k);
@@ -63,11 +65,11 @@ function Body({col}) {
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   };
-  const toaster = (text) => {
+  const toaster = (text,autoClose=3000) => {
     toast(text, {
       className: "message",
       position: "top-center",
-      autoClose: 3000,
+      autoClose,
       hideProgressBar: true,
       closeOnClick: false,
     });
@@ -83,14 +85,10 @@ function Body({col}) {
     return place;
   };
   const handleSubmit = async () => {
-    if (words[rowCount].length === 5) {
-      const evf = await fetch(
-        process.env.REACT_APP_REMOTE_HOST +
-          "/evaluate?tried=" +
-          words[rowCount].join("")
-      ).then((e) => e.json());
-      const ev = evf.result;
-      if (ev.join("") === [-1, -1, -1, -1, -1].join("")) {
+    if (words[rowCount].length === col) {
+      const ev = Evaluator(words[rowCount], col);
+      if (ev.join("") === new Array(col).fill(-1).join("")) {
+        console.log("its working");
         const popupListWrong = ["ምንሼ", "ቀለደኛ ነህ", "አላለም🤭"];
         const popupWrong =
           popupListWrong[
@@ -135,14 +133,25 @@ function Body({col}) {
         }
       }
 
-      if (ev.join("") === [4, 4, 4, 4, 4].join("")) {
+      if (ev.join("") === new Array(col).fill(4).join("")) {
         setFinished(true);
         const popupList = ["ጀግና", "እሳት", "አንበሳ", "ወንዳታ", "ትችላለህ"];
 
         const popup =
           popupList[Math.floor(Math.random() * popupList.length)].toString();
         delay(1550).then(() => toaster(popup));
-        delay(2000).then(() => setmodalStatus(true));
+        delay(2000).then(() => setModalStatus(true));
+        endGame({
+          rowCount,
+          win: true,
+        });
+      } else if (rowCount + 1 === 6) {
+        delay(1550).then(() =>toaster(window.pw.join(""),false))
+        endGame({
+          rowCount,
+          win: false,
+        });
+        delay(2000).then(() => setModalStatus(true));
       }
     }
   };
@@ -177,7 +186,7 @@ function Body({col}) {
           shake={shake}
           col={col}
         />
-        <ModalComp modalIs={modalStatus} />
+        <ModalComp modalStatus={modalStatus} setModalStatus={setModalStatus} />
       </div>
       <Keyboard
         setWords={changeWords}
@@ -185,7 +194,7 @@ function Body({col}) {
         handleBackspace={handleBackspace}
         highlight={highlight}
       />
-      <Hints rowCount={rowCount} col={col}/>
+      <Hints rowCount={rowCount} col={col} />
     </React.Fragment>
   );
 }

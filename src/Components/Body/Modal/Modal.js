@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 
 import Modal from "react-modal";
+import { gameData } from "../../../Utils/progress";
 import ProgressBar from "./ProgressBar/ProgressBar";
 
 Modal.setAppElement("#root");
-function ModalComp({ rowCount, modalIs }) {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [progress, setProgress] = useState([4, 3, 1, 0, 2]);
-  const totalPlayed = progress.reduce((prev, current) => prev + current);
-  console.log({ totalPlayed });
+function ModalComp({ modalStatus, setModalStatus }) {
+  let data = gameData()
+  const [progress, setProgress] = useState(data.progress);
+  const totalPlayed = data.totalPlayed
 
   return (
     <div className="modalWrapper">
-      {/* <button onClick={() => setIsOpen(true)}>open</button> */}
       <Modal
-        isOpen={modalIs}
-        onRequestClose={() => setIsOpen(false)}
+        isOpen={modalStatus}
+        onRequestClose={() => setModalStatus(false)}
         className="Modal"
         overlayClassName="Overlay"
       >
@@ -23,7 +22,7 @@ function ModalComp({ rowCount, modalIs }) {
           <button
             className="modalBtn"
             onClick={() => {
-              setIsOpen(false);
+              setModalStatus(false);
             }}
           >
             X
@@ -37,23 +36,23 @@ function ModalComp({ rowCount, modalIs }) {
               <div className="bottom">played</div>
             </div>
             <div className="stat win">
-              <div className="top">100</div>
+              <div className="top">{data.winPercent}</div>
               <div className="bottom">win %</div>
             </div>
             <div className="stat currentStreak">
-              <div className="top">2</div>
+              <div className="top">{data.currentStreak}</div>
               <div className="bottom">
                 current <br /> Streak
               </div>
             </div>
             <div className="stat maxStrak">
-              <div className="top">2</div>
+              <div className="top">{data.maxStreak}</div>
               <div className="bottom">
                 max <br /> Streak
               </div>
             </div>
           </div>
-          <h3 className="graphHeader">Guss Distribution</h3>
+          <h3 className="graphHeader">Guess Distribution</h3>
           <div className="graph">
             {progress.map((prog, key) => (
               <ProgressBar
@@ -62,7 +61,7 @@ function ModalComp({ rowCount, modalIs }) {
                 row={key}
                 key={key}
                 totalPlayed={totalPlayed}
-                rowCount={rowCount}
+                today={data.today}
               />
             ))}
           </div>

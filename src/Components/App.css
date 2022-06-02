@@ -32,15 +32,15 @@ body {
   font-size: 2rem;
 }
 .header .col-amount{
+  position: absolute;
+  top:0.5rem;
+  right:1rem;
   width:6rem;
-  
   display: flex;
   flex-direction: row;
   height:2rem;
   border-radius: 10px;
   overflow: hidden;
-  margin:auto;
-  margin-bottom: 1rem;
   cursor: pointer;
   /* background-color: red; */
 }
