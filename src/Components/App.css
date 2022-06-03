@@ -10,7 +10,7 @@
 body {
   background-color: #121213;
   position: absolute;
-  width:100%;
+  width: 100%;
   height: 100%;
   /* display: flex;
   flex-direction: column; */
@@ -25,63 +25,71 @@ body {
   color: white;
   letter-spacing: 2px;
   text-align: center;
-  border-bottom: 0.5px solid #3A3A3C;
+  border-bottom: 0.5px solid #3a3a3c;
   align-content: center;
 }
-.header h3{
+.header h3 {
   font-size: 2rem;
 }
-.header .col-amount{
-  width:6rem;
+.header .col-amount {
+  width: 6rem;
   display: flex;
   flex-direction: row;
-  height:1.5rem;
+  height: 1.5rem;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  border:1px solid rgba(221, 221, 221, 0.315);
+  border: 1px solid rgba(221, 221, 221, 0.315);
   /* background-color: red; */
 }
-.header .right-header{
+.header .right-header {
   position: absolute;
-  top:0.5rem;
-  right:1rem;
+  top: 0.5rem;
+  right: 1rem;
   /* background:red; */
-  width:9rem;
+  width: 9rem;
 }
-.header .right-header .stats{
+.header .left-header {
   position: absolute;
-  top:0rem;
-  right:0;
-  background:rgba(0,0,0,0);
-  border:1px solid rgba(0,0,0,0);
-  padding:0.25rem;
+  top: 0.5rem;
+  left: 1rem;
+  width: 2rem;
+}
+.header .bth {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 0.25rem;
   padding-top: 0;
   cursor: pointer;
 }
-.header .right-header .stats:hover{
-  background:rgba(255, 255, 255, 0.295);
+.header .bth:hover {
+  background: rgba(255, 255, 255, 0.295);
 }
-.header .col-amount .col-box{
-  flex:1;
+.header .right-header .stats {
+  position: absolute;
+  top: 0rem;
+  right: 0;
+}
+.header .col-amount .col-box {
+  flex: 1;
   display: inline-block;
-  background:rgba(68, 68, 68, 0.26);
+  background: rgba(68, 68, 68, 0.26);
 }
-.header .col-amount .col-box.selected{
-  background:rgb(97, 97, 97);
+.header .col-amount .col-box.selected {
+  background: rgb(97, 97, 97);
 }
-.header .col-amount .col-box:first-child{
-  border-right:1px solid gray;
+.header .col-amount .col-box:first-child {
+  border-right: 1px solid gray;
 }
 @keyframes fd {
-  from{
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
-.fade-body.fade{
+.fade-body.fade {
   opacity: 0;
   animation: fd 1s ease-out forwards;
 }

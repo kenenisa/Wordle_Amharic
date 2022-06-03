@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Body from "./Body/Body";
+//
+import stats from "./../Assets/stats.svg";
+import info from "./../Assets/info.svg";
 function App() {
   const [col, setCol] = useState(Number(localStorage.col) || 5);
   const [modalStatus, setModalStatus] = useState(false);
@@ -24,6 +27,11 @@ function App() {
   return (
     <div className="App">
       <div className="header">
+        <div className="left-header">
+          <button className="bth info">
+            <img src={info} alt="info" />
+          </button>
+        </div>
         <h3>ወርድል</h3>
         <div className="right-header">
           <div className="col-amount">
@@ -41,20 +49,10 @@ function App() {
             </div>
           </div>
           <button
-            className="stats"
+            className="bth stats"
             onClick={() => setModalStatus(!modalStatus)}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-            >
-              <path
-                fill="white"
-                d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"
-              ></path>
-            </svg>
+            <img src={stats} alt="stats" />
           </button>
         </div>
       </div>
