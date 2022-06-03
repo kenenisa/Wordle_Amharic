@@ -27,39 +27,6 @@
 .grid_row.final .row_items.a4 {
   animation-delay: 1250ms;
 }
-@keyframes load{
-  0%{
-    transform:scale(1)
-  }
-  10%{
-    transform:scale(0.6)
-  }
-  20%{
-    transform:scale(1)
-  }
-  100%{
-    transform:scale(1)
-  }
-}
-.grid_row.loading-grid .row_items{
-  animation:load 1500ms infinite;
-}
-.grid_row.loading-grid .row_items.a0 {
-  animation-delay: 0;
-}
-.grid_row.loading-grid .row_items.a1 {
-  animation-delay: 300ms;
-}
-.grid_row.loading-grid .row_items.a2 {
-  animation-delay: 600ms;
-}
-.grid_row.loading-grid .row_items.a3 {
-  animation-delay: 900ms;
-}
-.grid_row.loading-grid .row_items.a4 {
-  animation-delay: 1200ms;
-}
-
 
 .grid_row.final .row_items.correct {
   background: #538d4e;

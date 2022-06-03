@@ -2,7 +2,7 @@ import React from "react";
 import "./GridRow.css";
 import Item from "./Item/Item";
 //
-function Grid_row({ row, word, final, evaluated, shake,loading,col }) {
+function Grid_row({ row, word, final, evaluated, shake,col,finished }) {
   const itemType = (val) => {
     if (evaluated) {
       const ev = evaluated[val];
@@ -24,7 +24,7 @@ function Grid_row({ row, word, final, evaluated, shake,loading,col }) {
     column.push(0)
   }
   return (
-    <div className={`grid_row row-${row} ${final ? "final":''} ${row === shake ? 'shake' : ''}`}>
+    <div className={`grid_row row-${row} ${final || finished ? "final":''} ${row === shake ? 'shake' : ''}`}>
       {column.map((v, key) => <Item pos={key} word={word} itemType={itemType} aD={aD} key={key} />)}
 
     </div>

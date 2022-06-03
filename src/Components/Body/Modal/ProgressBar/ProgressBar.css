@@ -1,6 +1,6 @@
 .outerRight {
   display: flex;
-  width: 55vh;
+  max-width: 55vh;
   height: 1.35rem;
 }
 

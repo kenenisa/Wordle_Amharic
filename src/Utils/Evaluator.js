@@ -2,10 +2,10 @@ import allFive from "../Assets/Data/allFive.json";
 import allFour from "../Assets/Data/allFour.json";
 import output from "../Assets/Data/output.json";
 
-export default (tried, col) => {
+const Evaluator = (tried, col) => {
   let allWords = allFive;
   const alphabet = output;
-  if (col == 4) {
+  if (col === 4) {
     allWords = allFour;
   }
   const chosenWord = JSON.parse(JSON.stringify(window.pw));
@@ -70,3 +70,4 @@ export default (tried, col) => {
   }
   return result;
 };
+export default Evaluator

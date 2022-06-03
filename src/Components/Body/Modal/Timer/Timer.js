@@ -13,7 +13,7 @@ function Timer() {
       setTime(parseTime(midnight - new Date().getTime()));
     }, 1000);
     return () => clearInterval(int);
-  }, []);
+  }, [midnight]);
   return (
     <div className="timer">
       <span className="hour">{t.hour}</span>:

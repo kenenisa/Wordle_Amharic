@@ -10,38 +10,42 @@ import Evaluator from "../../Utils/Evaluator";
 // import ProgressBar from "./Modal/ProgressBar/ProgressBar";
 // import Modal from "./Modal/Modal";
 import ModalComp from "./Modal/Modal";
-import { endGame } from "../../Utils/progress";
+import { endGame, getLocal, setLocal } from "../../Utils/progress";
 
-function Body({ col }) {
-  const [modalStatus, setModalStatus] = useState(true);
+function Body({ col, modalStatus, setModalStatus }) {
+  let local = getLocal(col);
 
-  const init = false
-    ? JSON.parse(localStorage.words)
-    : [[], [], [], [], [], []];
-  const [words, setWords] = useState(init);
+  const [words, setWords] = useState(local.words);
+  const [rowCount, setRowCount] = useState(local.rowCount);
+  const [final, setFinal] = useState(local.final);
+  const [evaluated, setEvaluated] = useState(local.evaluated);
+  const [finished, setFinished] = useState(local.finished);
+  const [highlight, setHighlight] = useState(local.highlight);
 
-  const initRowCount = false ? JSON.parse(localStorage.rowCount) : 0;
-  const [rowCount, setRowCount] = useState(initRowCount);
-
-  const initFinal = false ? JSON.parse(localStorage.final) : [];
-  const [final, setFinal] = useState(initFinal);
-
-  const initEvaluated = false
-    ? JSON.parse(localStorage.evaluated)
-    : [[], [], [], [], []];
-  const [evaluated, setEvaluated] = useState(initEvaluated);
   const [x, setX] = useState(0);
-  const [finished, setFinished] = useState(false);
-  const intiHighlight = false ? JSON.parse(localStorage.highlight) : {};
-  const [highlight, setHighlight] = useState(intiHighlight);
   const [shake, setShake] = useState(false);
   useEffect(() => {
-    localStorage.words = JSON.stringify(words);
-    localStorage.evaluated = JSON.stringify(evaluated);
-    localStorage.rowCount = JSON.stringify(rowCount);
-    localStorage.final = JSON.stringify(final);
-    localStorage.highlight = JSON.stringify(highlight);
-  }, [x, words, evaluated, rowCount, highlight, final]);
+    setLocal(col, {
+      words,
+      evaluated,
+      rowCount,
+      final,
+      highlight,
+      finished,
+    });
+  }, [x, words, evaluated, rowCount, highlight, final, finished, col]);
+  useEffect(() => {
+    local = getLocal(col);
+    setWords(local.words);
+    setRowCount(local.rowCount);
+    setFinal(local.final);
+    setEvaluated(local.evaluated);
+    setFinished(local.finished);
+    setHighlight(local.highlight);
+    if(local.finished){
+      setTimeout(()=>setModalStatus(true),2000)
+    }
+  }, [col]);
   const changeWords = (k, replace = false) => {
     if (!finished) {
       const temp = words;
@@ -65,7 +69,7 @@ function Body({ col }) {
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   };
-  const toaster = (text,autoClose=3000) => {
+  const toaster = (text, autoClose = 3000) => {
     toast(text, {
       className: "message",
       position: "top-center",
@@ -88,7 +92,6 @@ function Body({ col }) {
     if (words[rowCount].length === col) {
       const ev = Evaluator(words[rowCount], col);
       if (ev.join("") === new Array(col).fill(-1).join("")) {
-        console.log("its working");
         const popupListWrong = ["ምንሼ", "ቀለደኛ ነህ", "አላለም🤭"];
         const popupWrong =
           popupListWrong[
@@ -141,16 +144,22 @@ function Body({ col }) {
           popupList[Math.floor(Math.random() * popupList.length)].toString();
         delay(1550).then(() => toaster(popup));
         delay(2000).then(() => setModalStatus(true));
-        endGame({
-          rowCount,
-          win: true,
-        });
+        endGame(
+          {
+            rowCount,
+            win: true,
+          },
+          col
+        );
       } else if (rowCount + 1 === 6) {
-        delay(1550).then(() =>toaster(window.pw.join(""),false))
-        endGame({
-          rowCount,
-          win: false,
-        });
+        delay(1550).then(() => toaster(window.pw.join(""), false));
+        endGame(
+          {
+            rowCount,
+            win: false,
+          },
+          col
+        );
         delay(2000).then(() => setModalStatus(true));
       }
     }
@@ -185,8 +194,15 @@ function Body({ col }) {
           evaluated={evaluated}
           shake={shake}
           col={col}
+          finished={finished}
         />
-        <ModalComp modalStatus={modalStatus} setModalStatus={setModalStatus} toaster={toaster}/>
+        <ModalComp
+          modalStatus={modalStatus}
+          setModalStatus={setModalStatus}
+          toaster={toaster}
+          col={col}
+          evaluated={evaluated}
+        />
       </div>
       <Keyboard
         setWords={changeWords}

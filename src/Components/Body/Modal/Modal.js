@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Modal.css";
 import Modal from "react-modal";
 import { gameData } from "../../../Utils/progress";
@@ -7,12 +7,12 @@ import Timer from "./Timer/Timer";
 import ShareGenerator from "./../../../Utils/ShareGenerator";
 
 Modal.setAppElement("#root");
-function ModalComp({ modalStatus, setModalStatus, toaster }) {
-  let data = gameData();
-  const [progress, setProgress] = useState(data.progress);
+function ModalComp({ modalStatus, setModalStatus, toaster,col,evaluated }) {
+  let data = gameData(col);
+  // const [progress, setProgress] = useState(data.progress);
   const totalPlayed = data.totalPlayed;
   const share = () => {
-    navigator.clipboard.writeText(ShareGenerator());
+    navigator.clipboard.writeText(ShareGenerator(evaluated));
     toaster("Text copied to clipboard")
   };
   return (
@@ -59,7 +59,7 @@ function ModalComp({ modalStatus, setModalStatus, toaster }) {
           </div>
           <h3 className="graphHeader">Guess Distribution</h3>
           <div className="graph">
-            {progress.map((prog, key) => (
+            {data.progress.map((prog, key) => (
               <ProgressBar
                 className="ProgressBar"
                 progress={prog}

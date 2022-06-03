@@ -1,8 +1,8 @@
 import allFive from "../Assets/Data/allFive.json";
 import allFour from "../Assets/Data/allFour.json";
 
-export default (limit, col) => {
-    let allWords = col == 4 ? allFour : allFive
+const RandomWords = (limit, col) => {
+    let allWords = col === 4 ? allFour : allFive
     limit = Math.floor(limit ? limit : 5)
     const result = []
     const items = []
@@ -22,3 +22,4 @@ export default (limit, col) => {
     }
     return result
 }
+export default RandomWords

@@ -1,4 +1,4 @@
-export default (time) => {
+const parseTime =  (time) => {
     // console.log(time);
     const anHour = 1000 * 60 * 60
     const anMinute = 1000 * 60
@@ -10,3 +10,4 @@ export default (time) => {
     if (second < 10) second = "0" + second  
     return {hour,minute,second}
 }
+export default parseTime

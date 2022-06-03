@@ -1,14 +1,14 @@
-export const endGame = (obj) => {
-  const results = localStorage.results ? JSON.parse(localStorage.results) : [];
+export const endGame = (obj,col) => {
+  const results = localStorage['r' + col] ? JSON.parse(localStorage['r' + col]) : [];
   obj.date = new Date().toDateString();
   results.push(obj);
-  localStorage.results = JSON.stringify(results);
+  localStorage['r' + col] = JSON.stringify(results);
 };
-export const gameData = () => {
-  const results = localStorage.results
-    ? JSON.parse(localStorage.results)
+export const gameData = (col) => {
+  const results = localStorage['r' + col]
+    ? JSON.parse(localStorage['r' + col])
     : false;
-  let totalPlayed = results.length;
+  let totalPlayed = results.length || 0;
   let winCount = 0;
   let winPercent = 0;
   let maxStreak = 0;
@@ -27,9 +27,30 @@ export const gameData = () => {
       }
       maxStreak = Math.max(currentStreak, maxStreak);
     });
-    const last = results[totalPlayed - 1]
-    today[last.rowCount] = last.win
+    const last = results[totalPlayed - 1];
+    today[last.rowCount] = last.win;
   }
 
-  return {totalPlayed,winCount,winPercent,maxStreak,currentStreak,progress,today}
+  return {
+    totalPlayed,
+    winCount,
+    winPercent,
+    maxStreak,
+    currentStreak,
+    progress,
+    today,
+  };
+};
+export const getLocal = (col) => {
+  const mdr = new Array(6).fill([])
+  let result = { words:mdr, rowCount:0, final:[], evaluated:mdr, finished:false, highlight:{} }
+
+  if(localStorage[col]){
+    result = JSON.parse(localStorage[col])
+  }
+
+  return result
+};
+export const setLocal = (col,obj) => {
+  localStorage[col] = JSON.stringify(obj)
 };
