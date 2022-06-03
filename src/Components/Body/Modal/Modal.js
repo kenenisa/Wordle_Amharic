@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import './Modal.css'
+import "./Modal.css";
 import Modal from "react-modal";
 import { gameData } from "../../../Utils/progress";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import Timer from "./Timer/Timer";
+import ShareGenerator from "./../../../Utils/ShareGenerator";
 
 Modal.setAppElement("#root");
-function ModalComp({ modalStatus, setModalStatus }) {
-  let data = gameData()
+function ModalComp({ modalStatus, setModalStatus, toaster }) {
+  let data = gameData();
   const [progress, setProgress] = useState(data.progress);
-  const totalPlayed = data.totalPlayed
-
+  const totalPlayed = data.totalPlayed;
+  const share = () => {
+    navigator.clipboard.writeText(ShareGenerator());
+    toaster("Text copied to clipboard")
+  };
   return (
     <div className="modalWrapper">
       <Modal
@@ -69,10 +73,12 @@ function ModalComp({ modalStatus, setModalStatus }) {
           <div className="bottom-area">
             <div className="time">
               <p>Next in</p>
-              <Timer/>
+              <Timer />
             </div>
             <div className="share">
-              <button className="share-btn">SHARE</button>
+              <button className="share-btn" onClick={share}>
+                SHARE
+              </button>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ import Evaluator from "../../Utils/Evaluator";
 // import ProgressBar from "./Modal/ProgressBar/ProgressBar";
 // import Modal from "./Modal/Modal";
 import ModalComp from "./Modal/Modal";
-import { endGame, gameData } from "../../Utils/progress";
+import { endGame } from "../../Utils/progress";
 
 function Body({ col }) {
   const [modalStatus, setModalStatus] = useState(true);
@@ -186,7 +186,7 @@ function Body({ col }) {
           shake={shake}
           col={col}
         />
-        <ModalComp modalStatus={modalStatus} setModalStatus={setModalStatus} />
+        <ModalComp modalStatus={modalStatus} setModalStatus={setModalStatus} toaster={toaster}/>
       </div>
       <Keyboard
         setWords={changeWords}
