@@ -45,9 +45,9 @@ body {
 .header .right-header {
   position: absolute;
   top: 0.5rem;
-  right: 1rem;
+  right: 0.5rem;
   /* background:red; */
-  width: 9rem;
+  width: 8.5rem;
 }
 .header .left-header {
   position: absolute;

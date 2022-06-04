@@ -42,9 +42,9 @@ function Body({ col, modalStatus, setModalStatus }) {
     setEvaluated(local.evaluated);
     setFinished(local.finished);
     setHighlight(local.highlight);
-    if(local.finished){
-      setTimeout(()=>setModalStatus(true),2000)
-    }
+    // if(local.finished){
+    //   setTimeout(()=>setModalStatus(true),2000)
+    // }
   }, [col]);
   const changeWords = (k, replace = false) => {
     if (!finished) {

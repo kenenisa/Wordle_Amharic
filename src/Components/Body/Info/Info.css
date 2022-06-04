@@ -1,0 +1,139 @@
+.info-modal {
+  position: absolute;
+  top: 3rem;
+  /* left: 40px;
+  right: 40px; */
+  background-color: #121213;
+  color: white;
+  /* width: 50vh; */
+  align-items: center;
+  align-self: center;
+  text-align: center;
+  place-self: center;
+  margin: auto;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%);
+  z-index: 5;
+  overflow: auto;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.459);
+  overflow: auto;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBtn {
+  background: transparent;
+  color: white;
+  padding: 2vh;
+  padding-top:0.5rem;
+  border: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font-size:1.5rem;
+}
+.headerText {
+  margin-top: 6vh;
+  letter-spacing: 1px;
+}
+.modal_stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.stat {
+  margin: 0.8vh;
+  font-size: 5vh;
+}
+.top {
+  margin: auto;
+}
+.bottom {
+  font-size: small;
+}
+.graphHeader {
+  margin: 3vh 0vh 3vh 0vh;
+  text-align: center;
+}
+.graph {
+  display: grid;
+}
+.time{
+    position: relative;
+    top:1rem;
+    width:40%;
+    left:5%;
+    border-right:1px solid #aaa
+    /* background:red; */
+}
+.share{
+    position: relative;
+    top:-2.5rem;
+    left:50%;
+    width:40%;
+}
+.share .share-btn{
+    margin:auto;
+    background:#538d4e;
+    border:1px solid #538d4e;
+    color:white;
+    font-size:1.2rem;
+    font-weight:bold;
+    padding:0.75rem 1.75rem;
+    border-radius:5px;
+    cursor: pointer;
+}
+.modalBody{
+  text-align: left;
+}
+.modalBody .section{
+  margin:0 2rem 1rem 4rem;
+  padding-bottom:1rem;
+  border-bottom: 1px solid rgba(170, 170, 170, 0.377);
+}
+.modalBody .section p {
+  margin-bottom:2rem;
+}
+.modalBody .for-info{
+  height:4rem;
+}
+@media screen and (min-width: 500px) {
+  .Modal {
+    width: 77vh;
+  }
+}
+@media screen and (max-width: 400px) {
+  .Modal {
+    width: 50vh;
+    max-height: 80vh;
+  }
+  .modalBody .section{
+    margin:0 1rem 1rem 1rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .Modal {
+    width: 90%;
+    left: 5%;
+  }
+  .graph {
+    left: 0;
+  }
+  .modalBody .section{
+    margin:0 2rem 1rem 2rem;
+  }
+}
