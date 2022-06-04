@@ -10,7 +10,7 @@
 body {
   background-color: #121213;
   position: absolute;
-  width:100%;
+  width: 100%;
   height: 100%;
   /* display: flex;
   flex-direction: column; */
@@ -25,43 +25,68 @@ body {
   color: white;
   letter-spacing: 2px;
   text-align: center;
-  border-bottom: 0.5px solid #3A3A3C;
+  border-bottom: 0.5px solid #3a3a3c;
   align-content: center;
+  display: grid;
 }
-.header h3{
+.header h3 {
+  flex: 3;
+  /* border: solid red; */
   font-size: 2rem;
-}
-.header .col-amount{
-  width:6rem;
-  
-  display: flex;
-  flex-direction: row;
-  height:2rem;
-  border-radius: 10px;
-  overflow: hidden;
-  margin:auto;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  /* background-color: red; */
-}
-.header .col-amount .col-box{
-  flex:1;
-  display: inline-block;
-  background:rgba(68, 68, 68, 0.26);
-}
-.header .col-amount .col-box.selected{
-  background:rgb(97, 97, 97);
-}
-.header .col-amount .col-box span{
-  position: relative;
-  top:0.4rem;
-  width:0.15rem;
-  height:0.05rem;
-  background:rgb(192, 192, 192);
-  margin:2px;
-  padding:0.17rem;
-}
-.header .col-amount .col-box:first-child{
-  border-right:1px solid gray;
+  margin: 1rem;
 }
 
+.header .col-amount {
+  /* border: solid brown; */
+  width: 9rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  /* height: 2rem; */
+  /* padding: 1rem; */
+  /* border: solid white; */
+  border-radius: 10px;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  justify-content: flex-end;
+  /* background-color: red; */
+}
+.header .col-amount .col-box {
+  flex: 1;
+  display: inline-block;
+  background: rgba(68, 68, 68, 0.26);
+  border: transparent;
+  padding: 0.5rem;
+  /* border: solid white; */
+  /* justify-content: space-around; */
+}
+.header .col-amount .col-box.selected {
+  animation: fadeIn 2s;
+  /* opacity: 1; */
+  /* background: rgb(114, 29, 29); */
+  background-color: gray;
+}
+.header .col-amount .col-box span {
+  position: relative;
+  top: 0.4rem;
+  width: 0.15rem;
+  height: 0.05rem;
+  background: rgb(192, 192, 192);
+  margin: 2px;
+  padding: 0.17rem;
+}
+.header .col-amount .col-box:first-child {
+  border-right: 1px solid gray;
+}
+@keyframes fadeIn {
+  from {
+    /* opacity: 0; */
+    background-color: #3a3a3c;
+  }
+  to {
+    /* opacity: 1; */
+    background-color: gray;
+  }
+}
