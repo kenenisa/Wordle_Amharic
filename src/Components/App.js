@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Body from "./Body/Body";
+import Info from "./Body/Info/Info";
+import { resetLocal } from "../Utils/progress";
 //
 import stats from "./../Assets/stats.svg";
 import info from "./../Assets/info.svg";
-import Info from "./Body/Info/Info";
+//
 function App() {
-  const [col, setCol] = useState(Number(localStorage.col) || 5);
+  const [col, setCol] = useState(Number(localStorage.col) || 4);
   const [modalStatus, setModalStatus] = useState(false);
   const [infoStatus, setInfoStatus] = useState(false);
-
+  const [readyToDisplay, setReadyToDisplay] = useState(false);
   const [showBody, setShowBody] = useState(true);
-  const changeCol = (val) => {
-    localStorage.col = val;
-    setCol(val);
+  const blink = () => {
     setShowBody(false);
     setTimeout(() => {
       setShowBody(true);
     }, 100);
+  };
+  const changeCol = (val) => {
+    localStorage.col = val;
+    setCol(val);
+    blink();
   };
   useEffect(() => {
     fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord?col=" + col)
@@ -37,56 +42,62 @@ function App() {
       localStorage.infoCounter = 1;
       setInfoStatus(true);
     }
+    if (resetLocal()) {
+      setReadyToDisplay(true);
+    }
   }, []);
-  return (
-    <div className="App">
-      <div className="header">
-        <div className="left-header">
-          <button
-            className="bth info"
-            onClick={() => setInfoStatus(!infoStatus)}
-          >
-            <img src={info} alt="info" />
-          </button>
-          <Info infoStatus={infoStatus} setInfoStatus={setInfoStatus} />
-        </div>
-        <h3>ወርድል</h3>
-        <div className="right-header">
-          <div className="col-amount">
-            <div
-              className={`col-box ${col === 5 && "selected"}`}
-              onClick={() => changeCol(5)}
+  if (readyToDisplay) {
+    return (
+      <div className="App">
+        <div className="header">
+          <div className="left-header">
+            <button
+              className="bth info"
+              onClick={() => setInfoStatus(!infoStatus)}
             >
-              <div className="num">5</div>
-            </div>
-            <div
-              className={`col-box ${col === 4 && "selected"}`}
-              onClick={() => changeCol(4)}
-            >
-              <div className="num">4</div>
-            </div>
+              <img src={info} alt="info" />
+            </button>
+            <Info infoStatus={infoStatus} setInfoStatus={setInfoStatus} />
           </div>
-          <button
-            className="bth stats"
-            onClick={() => setModalStatus(!modalStatus)}
-          >
-            <img src={stats} alt="stats" />
-          </button>
+          <h3>ወርድል</h3>
+          <div className="right-header">
+            <div className="col-amount">
+              <div
+                className={`col-box ${col === 5 && "selected"}`}
+                onClick={() => changeCol(5)}
+              >
+                <div className="num">5</div>
+              </div>
+              <div
+                className={`col-box ${col === 4 && "selected"}`}
+                onClick={() => changeCol(4)}
+              >
+                <div className="num">4</div>
+              </div>
+            </div>
+            <button
+              className="bth stats"
+              onClick={() => setModalStatus(!modalStatus)}
+            >
+              <img src={stats} alt="stats" />
+            </button>
+          </div>
+        </div>
+        <div className="body">
+          <div className={`fade-body ${showBody && "fade"}`}>
+            {showBody && (
+              <Body
+                col={col}
+                modalStatus={modalStatus}
+                setModalStatus={setModalStatus}
+              />
+            )}
+          </div>
         </div>
       </div>
-      <div className="body">
-        <div className={`fade-body ${showBody && "fade"}`}>
-          {showBody && (
-            <Body
-              col={col}
-              modalStatus={modalStatus}
-              setModalStatus={setModalStatus}
-            />
-          )}
-        </div>
-      </div>
-    </div>
-  );
+    );
+  }
+  return <h1 style={{ color: "white" }}>Loading...</h1>;
 }
 
 export default App;

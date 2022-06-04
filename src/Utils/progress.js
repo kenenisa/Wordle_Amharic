@@ -1,12 +1,14 @@
-export const endGame = (obj,col) => {
-  const results = localStorage['r' + col] ? JSON.parse(localStorage['r' + col]) : [];
+export const endGame = (obj, col) => {
+  const results = localStorage["r" + col]
+    ? JSON.parse(localStorage["r" + col])
+    : [];
   obj.date = new Date().toDateString();
   results.push(obj);
-  localStorage['r' + col] = JSON.stringify(results);
+  localStorage["r" + col] = JSON.stringify(results);
 };
 export const gameData = (col) => {
-  const results = localStorage['r' + col]
-    ? JSON.parse(localStorage['r' + col])
+  const results = localStorage["r" + col]
+    ? JSON.parse(localStorage["r" + col])
     : false;
   let totalPlayed = results.length || 0;
   let winCount = 0;
@@ -41,16 +43,39 @@ export const gameData = (col) => {
     today,
   };
 };
-export const getLocal = (col) => {
-  const mdr = new Array(6).fill([])
-  let result = { words:mdr, rowCount:0, final:[], evaluated:mdr, finished:false, highlight:{} }
+export const getLocal = (col, work = true) => {
+  const mdr = new Array(6).fill([]);
+  let result = {
+    words: mdr,
+    rowCount: 0,
+    final: [],
+    evaluated: mdr,
+    finished: false,
+    highlight: {},
+  };
 
-  if(localStorage[col]){
-    result = JSON.parse(localStorage[col])
+  if (localStorage[col] && work) {
+    result = JSON.parse(localStorage[col]);
   }
 
-  return result
+  return result;
 };
-export const setLocal = (col,obj) => {
-  localStorage[col] = JSON.stringify(obj)
+export const setLocal = (col, obj) => {
+  localStorage[col] = JSON.stringify(obj);
+  localStorage.timestamp = new Date().getTime();
+};
+export const resetLocal = () => {
+  if (localStorage.timestamp) {
+    console.log("okay");
+    const today = new Date(Number(localStorage.timestamp));
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const midnight = new Date(tomorrow.toDateString()).getTime();
+    if (midnight < new Date().getTime()) {
+      console.log("sup");
+      setLocal(5, getLocal(5, false));
+      setLocal(4, getLocal(4, false));
+    }
+  }
+  return true;
 };
