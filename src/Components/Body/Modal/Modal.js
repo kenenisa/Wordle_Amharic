@@ -30,7 +30,7 @@ function ModalComp({ modalStatus, setModalStatus, toaster, col, evaluated }) {
               setModalStatus(false);
             }}
           >
-            X
+            &#215;
           </button>
           <h3 className="headerText">ውጤት</h3>
         </div>

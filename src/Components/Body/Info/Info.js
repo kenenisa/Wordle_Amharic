@@ -19,7 +19,7 @@ function Info({ infoStatus, setInfoStatus }) {
               setInfoStatus(false);
             }}
           >
-            X
+             &#215;
           </button>
           <h3 className="headerText"><u>እንዴት እንደሚጫወቱ</u></h3>
         </div>

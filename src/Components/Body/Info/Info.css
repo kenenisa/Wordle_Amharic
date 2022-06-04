@@ -1,6 +1,6 @@
 .info-modal {
   position: absolute;
-  top: 3rem;
+  top: 0;
   /* left: 40px;
   right: 40px; */
   background-color: #121213;
@@ -43,7 +43,7 @@
   top: 0;
   right: 0;
   cursor: pointer;
-  font-size:1.5rem;
+  font-size:2rem;
 }
 .headerText {
   margin-top: 6vh;
@@ -135,5 +135,8 @@
   }
   .modalBody .section{
     margin:0 2rem 1rem 2rem;
+  }
+  .info-modal {
+    top: 3rem;
   }
 }
