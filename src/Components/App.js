@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Body from "./Body/Body";
-<<<<<<< HEAD
-import Toggle from "./Toggle";
-=======
 import Info from "./Body/Info/Info";
 import { resetLocal } from "../Utils/progress";
 //
 import stats from "./../Assets/stats.svg";
 import info from "./../Assets/info.svg";
 //
->>>>>>> bdf4b7b2ae4e63e4aa8a8db598034805465820db
 function App() {
   const [col, setCol] = useState(Number(localStorage.col) || 4);
   const [modalStatus, setModalStatus] = useState(false);
@@ -29,47 +25,6 @@ function App() {
     blink();
   };
   useEffect(() => {
-<<<<<<< HEAD
-    fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord")
-      .then((e) => e.json())
-      .then((e) => (window.pw = e));
-  }, []);
-  return (
-    <div className="App">
-      <div className="header">
-        <h3>ወርድል</h3>
-
-        <div className="col-amount">
-          <div
-            className={`col-box ${col === 5 && "selected"}`}
-            onClick={() => changeCol(5)}
-          >
-            <div className="num">5</div>
-            {/* <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span> */}
-          </div>
-          <div
-            className={`col-box ${col === 4 && "selected"}`}
-            onClick={() => changeCol(4)}
-          >
-            <div className="num">4</div>
-            {/* <span></span>
-            <span></span>
-            <span></span>
-            <span></span> */}
-          </div>
-        </div>
-      </div>
-      <div className="body">
-        {/* <Toggle /> */}
-        <Body col={col} />
-      </div>
-    </div>
-  );
-=======
     fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord?col=" + col)
       .then((e) => e.json())
       .then((e) => {
@@ -142,8 +97,7 @@ function App() {
       </div>
     );
   }
-  return <h1 style={{ color: "white",textAlign:"center" }}>Loading...</h1>;
->>>>>>> bdf4b7b2ae4e63e4aa8a8db598034805465820db
+  return <h1 style={{ color: "white", textAlign: "center" }}>Loading...</h1>;
 }
 
 export default App;
