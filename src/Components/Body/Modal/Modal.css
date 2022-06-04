@@ -70,30 +70,33 @@
 .graph {
   display: grid;
 }
-.time{
-    position: relative;
-    top:1rem;
-    width:40%;
-    left:5%;
-    border-right:1px solid #aaa
-    /* background:red; */
+.bottom-area {
+  margin-top:1rem;
+  display: flex;
+  flex-direction: row;
 }
-.share{
-    position: relative;
-    top:-2.5rem;
-    left:50%;
-    width:40%;
+.time {
+  border-right: 1px solid #aaa;
+  flex: 1;
+  align-content: center;
+  text-align: center;
 }
-.share .share-btn{
-    margin:auto;
-    background:#538d4e;
-    border:1px solid #538d4e;
-    color:white;
-    font-size:1.2rem;
-    font-weight:bold;
-    padding:0.75rem 1.75rem;
-    border-radius:5px;
-    cursor: pointer;
+.share-con {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.share-con .share-btn {
+  margin: auto;
+  background: #538d4e;
+  border: 1px solid #538d4e;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.75rem 1.75rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 @media screen and (min-width: 500px) {
   .Modal {

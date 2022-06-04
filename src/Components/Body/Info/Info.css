@@ -34,68 +34,7 @@
 }
 
 .modalBtn {
-  background: transparent;
-  color: white;
-  padding: 2vh;
-  padding-top:0.5rem;
-  border: transparent;
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
   font-size:2rem;
-}
-.headerText {
-  margin-top: 6vh;
-  letter-spacing: 1px;
-}
-.modal_stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.stat {
-  margin: 0.8vh;
-  font-size: 5vh;
-}
-.top {
-  margin: auto;
-}
-.bottom {
-  font-size: small;
-}
-.graphHeader {
-  margin: 3vh 0vh 3vh 0vh;
-  text-align: center;
-}
-.graph {
-  display: grid;
-}
-.time{
-    position: relative;
-    top:1rem;
-    width:40%;
-    left:5%;
-    border-right:1px solid #aaa
-    /* background:red; */
-}
-.share{
-    position: relative;
-    top:-2.5rem;
-    left:50%;
-    width:40%;
-}
-.share .share-btn{
-    margin:auto;
-    background:#538d4e;
-    border:1px solid #538d4e;
-    color:white;
-    font-size:1.2rem;
-    font-weight:bold;
-    padding:0.75rem 1.75rem;
-    border-radius:5px;
-    cursor: pointer;
 }
 .modalBody{
   text-align: left;
@@ -111,31 +50,9 @@
 .modalBody .for-info{
   height:4rem;
 }
-@media screen and (min-width: 500px) {
-  .Modal {
-    width: 77vh;
-  }
-}
-@media screen and (max-width: 400px) {
-  .Modal {
-    width: 50vh;
-    max-height: 80vh;
-  }
-  .modalBody .section{
-    margin:0 1rem 1rem 1rem;
-  }
-}
+
 @media screen and (max-width: 600px) {
-  .Modal {
-    width: 90%;
-    left: 5%;
-  }
-  .graph {
-    left: 0;
-  }
-  .modalBody .section{
-    margin:0 2rem 1rem 2rem;
-  }
+
   .info-modal {
     top: 3rem;
   }

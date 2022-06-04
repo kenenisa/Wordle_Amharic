@@ -97,7 +97,7 @@ function App() {
       </div>
     );
   }
-  return <h1 style={{ color: "white" }}>Loading...</h1>;
+  return <h1 style={{ color: "white",textAlign:"center" }}>Loading...</h1>;
 }
 
 export default App;

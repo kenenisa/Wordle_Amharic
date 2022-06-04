@@ -42,10 +42,12 @@ function Body({ col, modalStatus, setModalStatus }) {
     setEvaluated(local.evaluated);
     setFinished(local.finished);
     setHighlight(local.highlight);
-    // if(local.finished){
-    //   setTimeout(()=>setModalStatus(true),2000)
-    // }
   }, [col]);
+  useEffect(()=>{
+    if(local.finished){
+      setTimeout(()=>setModalStatus(true),2000)
+    }
+  },[finished])
   const changeWords = (k, replace = false) => {
     if (!finished) {
       const temp = words;

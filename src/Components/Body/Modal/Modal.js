@@ -76,7 +76,7 @@ function ModalComp({ modalStatus, setModalStatus, toaster, col, evaluated }) {
               <p>ቀጥሎ ወርድል</p>
               <Timer />
             </div>
-            <div className="share">
+            <div className="share-con">
               <button className="share-btn" onClick={share}>
                 አጋራ
               </button>
