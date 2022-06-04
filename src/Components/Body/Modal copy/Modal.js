@@ -4,17 +4,16 @@ import Modal from "react-modal";
 import { gameData } from "../../../Utils/progress";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import Timer from "./Timer/Timer";
-import ShareGenerator from "./../../../Utils/ShareGenerator";
+import ShareGenerator from "../../../Utils/ShareGenerator";
 
 Modal.setAppElement("#root");
-function ModalComp({ modalStatus, setModalStatus, toaster, col, evaluated }) {
+function ModalComp({ modalStatus, setModalStatus, toaster,col,evaluated }) {
   let data = gameData(col);
   // const [progress, setProgress] = useState(data.progress);
   const totalPlayed = data.totalPlayed;
   const share = () => {
     navigator.clipboard.writeText(ShareGenerator(evaluated));
-    toaster("Text copied to clipboard");
-    alert("Text copied, paste it where you want to share");
+    toaster("Text copied to clipboard")
   };
   return (
     <div className="modalWrapper">
@@ -31,34 +30,34 @@ function ModalComp({ modalStatus, setModalStatus, toaster, col, evaluated }) {
               setModalStatus(false);
             }}
           >
-            &#215;
+            X
           </button>
-          <h3 className="headerText">ውጤት</h3>
+          <h3 className="headerText">Statistics</h3>
         </div>
         <div className="modalBody">
           <div className="modal_stats">
             <div className="stat played">
               <div className="top">{totalPlayed}</div>
-              <div className="bottom">ተጫውቷል</div>
+              <div className="bottom">played</div>
             </div>
             <div className="stat win">
               <div className="top">{data.winPercent}</div>
-              <div className="bottom">አሸነፍ %</div>
+              <div className="bottom">win %</div>
             </div>
             <div className="stat currentStreak">
               <div className="top">{data.currentStreak}</div>
               <div className="bottom">
-                የአሁኑ <br /> ስትሪክ
+                current <br /> Streak
               </div>
             </div>
             <div className="stat maxStrak">
               <div className="top">{data.maxStreak}</div>
               <div className="bottom">
-                ከፍተኛ <br /> ስትሪክ
+                max <br /> Streak
               </div>
             </div>
           </div>
-          <h3 className="graphHeader">የግምት ስርጭት</h3>
+          <h3 className="graphHeader">Guess Distribution</h3>
           <div className="graph">
             {data.progress.map((prog, key) => (
               <ProgressBar
@@ -73,12 +72,12 @@ function ModalComp({ modalStatus, setModalStatus, toaster, col, evaluated }) {
           </div>
           <div className="bottom-area">
             <div className="time">
-              <p>ቀጥሎ ወርድል</p>
+              <p>Next in</p>
               <Timer />
             </div>
-            <div className="share-con">
+            <div className="share">
               <button className="share-btn" onClick={share}>
-                አጋራ
+                SHARE
               </button>
             </div>
           </div>

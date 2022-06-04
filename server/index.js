@@ -1,8 +1,9 @@
 const express = require('express')
 const cors = require('cors')
-const fs = require('fs')
 const evaluate = require('./Evaluate.js')
 const random = require('./RandomWords.js')
+const db = require('./models/db.js');
+const getPlayWord = require('./getPlayWord.js')
 
 
 const app = express()
@@ -23,6 +24,12 @@ app.get('/evaluate', (req, res) => {
         res.json({ result })
     })
 })
+app.get('/getPlayWord',(req,res)=>{
+  const col = req.query.col || 5
+  getPlayWord(col).then(result=>{
+    res.send(result)
+  })
+})
 app.get('/random', (req, res) => {
     const l = Number(req.query.limit)
     const col = req.query.col
@@ -34,8 +41,16 @@ app.get('/random', (req, res) => {
 
 
 
+app.set("port", process.env.PORT || 5000);
+app.set("host", process.env.HOST || "localhost");
 
-const PORT = 5000
-app.listen(PORT, () => {
-    console.log('Server up and running at localhost:' + PORT);
-})
+// db.sequelize.sync().then(function () {
+  app.listen(app.get("port"), function () {
+    console.log(
+      "%s server listening at http://%s:%s",
+      process.env.NODE_ENV,
+      app.get("host"),
+      app.get("port")
+    );
+  });
+// })

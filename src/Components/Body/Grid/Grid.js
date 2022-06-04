@@ -4,7 +4,7 @@ import "./Grid.css";
 
 import GridRow from "./GridRow/GridRow";
 //
-function Grid({ words, final, evaluated, shake, col }) {
+function Grid({ words, final, evaluated, shake, col,finished }) {
   const rowSize = [0, 0, 0, 0, 0, 0];
 
   return (
@@ -18,6 +18,7 @@ function Grid({ words, final, evaluated, shake, col }) {
           evaluated={evaluated[i]}
           shake={shake}
           col={col}
+          finished={finished}
         />
       ))}
     </div>

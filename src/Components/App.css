@@ -30,11 +30,15 @@ body {
   display: grid;
 }
 .header h3 {
+<<<<<<< HEAD
   flex: 3;
   /* border: solid red; */
+=======
+>>>>>>> bdf4b7b2ae4e63e4aa8a8db598034805465820db
   font-size: 2rem;
   margin: 1rem;
 }
+<<<<<<< HEAD
 
 .header .col-amount {
   /* border: solid brown; */
@@ -53,10 +57,52 @@ body {
   justify-content: flex-end;
   /* background-color: red; */
 }
+=======
+.header .col-amount {
+  width: 6rem;
+  display: flex;
+  flex-direction: row;
+  height: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(221, 221, 221, 0.315);
+  /* background-color: red; */
+}
+.header .right-header {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  /* background:red; */
+  width: 8.5rem;
+}
+.header .left-header {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  width: 2rem;
+}
+.header .bth {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 0.25rem;
+  padding-top: 0;
+  cursor: pointer;
+}
+.header .bth:hover {
+  background: rgba(255, 255, 255, 0.295);
+}
+.header .right-header .stats {
+  position: absolute;
+  top: 0rem;
+  right: 0;
+}
+>>>>>>> bdf4b7b2ae4e63e4aa8a8db598034805465820db
 .header .col-amount .col-box {
   flex: 1;
   display: inline-block;
   background: rgba(68, 68, 68, 0.26);
+<<<<<<< HEAD
   border: transparent;
   padding: 0.5rem;
   /* border: solid white; */
@@ -89,4 +135,24 @@ body {
     /* opacity: 1; */
     background-color: gray;
   }
+=======
+}
+.header .col-amount .col-box.selected {
+  background: rgb(97, 97, 97);
+}
+.header .col-amount .col-box:first-child {
+  border-right: 1px solid gray;
+}
+@keyframes fd {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-body.fade {
+  opacity: 0;
+  animation: fd 1s ease-out forwards;
+>>>>>>> bdf4b7b2ae4e63e4aa8a8db598034805465820db
 }

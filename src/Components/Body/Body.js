@@ -6,44 +6,52 @@ import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import alphabet from "./../../Assets/keysList.json";
 import Hints from "./Hints/Hints";
+import Evaluator from "../../Utils/Evaluator";
 // import ProgressBar from "./Modal/ProgressBar/ProgressBar";
 // import Modal from "./Modal/Modal";
 import ModalComp from "./Modal/Modal";
+import { endGame, getLocal, setLocal } from "../../Utils/progress";
 
-function Body({col}) {
-  const [modalStatus, setmodalStatus] = useState(false);
-  
-  const init = false
-    ? JSON.parse(localStorage.words)
-    : [[], [], [], [], [], []];
-  const [words, setWords] = useState(init);
+function Body({ col, modalStatus, setModalStatus }) {
+  let local = getLocal(col);
 
-  const initRowCount = false ? JSON.parse(localStorage.rowCount) : 0;
-  const [rowCount, setRowCount] = useState(initRowCount);
+  const [words, setWords] = useState(local.words);
+  const [rowCount, setRowCount] = useState(local.rowCount);
+  const [final, setFinal] = useState(local.final);
+  const [evaluated, setEvaluated] = useState(local.evaluated);
+  const [finished, setFinished] = useState(local.finished);
+  const [highlight, setHighlight] = useState(local.highlight);
 
-  const initFinal = false ? JSON.parse(localStorage.final) : [];
-  const [final, setFinal] = useState(initFinal);
-
-  const initEvaluated = false
-    ? JSON.parse(localStorage.evaluated)
-    : [[], [], [], [], []];
-  const [evaluated, setEvaluated] = useState(initEvaluated);
   const [x, setX] = useState(0);
-  const [finished, setFinished] = useState(false);
-  const intiHighlight = false ? JSON.parse(localStorage.highlight) : {};
-  const [highlight, setHighlight] = useState(intiHighlight);
   const [shake, setShake] = useState(false);
   useEffect(() => {
-    localStorage.words = JSON.stringify(words);
-    localStorage.evaluated = JSON.stringify(evaluated);
-    localStorage.rowCount = JSON.stringify(rowCount);
-    localStorage.final = JSON.stringify(final);
-    localStorage.highlight = JSON.stringify(highlight);
-  }, [x, words, evaluated, rowCount, highlight, final]);
+    setLocal(col, {
+      words,
+      evaluated,
+      rowCount,
+      final,
+      highlight,
+      finished,
+    });
+  }, [x, words, evaluated, rowCount, highlight, final, finished, col]);
+  useEffect(() => {
+    local = getLocal(col);
+    setWords(local.words);
+    setRowCount(local.rowCount);
+    setFinal(local.final);
+    setEvaluated(local.evaluated);
+    setFinished(local.finished);
+    setHighlight(local.highlight);
+  }, [col]);
+  useEffect(()=>{
+    if(local.finished){
+      setTimeout(()=>setModalStatus(true),2000)
+    }
+  },[finished])
   const changeWords = (k, replace = false) => {
     if (!finished) {
       const temp = words;
-      if (temp[rowCount].length < 5 || replace) {
+      if (temp[rowCount].length < col || replace) {
         if (words[rowCount].length) {
           if (!replace) {
             temp[rowCount].push(k);
@@ -63,11 +71,11 @@ function Body({col}) {
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
   };
-  const toaster = (text) => {
+  const toaster = (text, autoClose = 3000) => {
     toast(text, {
       className: "message",
       position: "top-center",
-      autoClose: 3000,
+      autoClose,
       hideProgressBar: true,
       closeOnClick: false,
     });
@@ -83,14 +91,9 @@ function Body({col}) {
     return place;
   };
   const handleSubmit = async () => {
-    if (words[rowCount].length === 5) {
-      const evf = await fetch(
-        process.env.REACT_APP_REMOTE_HOST +
-          "/evaluate?tried=" +
-          words[rowCount].join("")
-      ).then((e) => e.json());
-      const ev = evf.result;
-      if (ev.join("") === [-1, -1, -1, -1, -1].join("")) {
+    if (words[rowCount].length === col) {
+      const ev = Evaluator(words[rowCount], col);
+      if (ev.join("") === new Array(col).fill(-1).join("")) {
         const popupListWrong = ["ምንሼ", "ቀለደኛ ነህ", "አላለም🤭"];
         const popupWrong =
           popupListWrong[
@@ -135,14 +138,31 @@ function Body({col}) {
         }
       }
 
-      if (ev.join("") === [4, 4, 4, 4, 4].join("")) {
+      if (ev.join("") === new Array(col).fill(4).join("")) {
         setFinished(true);
         const popupList = ["ጀግና", "እሳት", "አንበሳ", "ወንዳታ", "ትችላለህ"];
 
         const popup =
           popupList[Math.floor(Math.random() * popupList.length)].toString();
         delay(1550).then(() => toaster(popup));
-        delay(2000).then(() => setmodalStatus(true));
+        delay(2000).then(() => setModalStatus(true));
+        endGame(
+          {
+            rowCount,
+            win: true,
+          },
+          col
+        );
+      } else if (rowCount + 1 === 6) {
+        delay(1550).then(() => toaster(window.pw.join(""), false));
+        endGame(
+          {
+            rowCount,
+            win: false,
+          },
+          col
+        );
+        delay(2000).then(() => setModalStatus(true));
       }
     }
   };
@@ -176,8 +196,15 @@ function Body({col}) {
           evaluated={evaluated}
           shake={shake}
           col={col}
+          finished={finished}
         />
-        <ModalComp modalIs={modalStatus} />
+        <ModalComp
+          modalStatus={modalStatus}
+          setModalStatus={setModalStatus}
+          toaster={toaster}
+          col={col}
+          evaluated={evaluated}
+        />
       </div>
       <Keyboard
         setWords={changeWords}
@@ -185,7 +212,7 @@ function Body({col}) {
         handleBackspace={handleBackspace}
         highlight={highlight}
       />
-      <Hints rowCount={rowCount} col={col}/>
+      <Hints rowCount={rowCount} col={col} />
     </React.Fragment>
   );
 }

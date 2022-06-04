@@ -1,6 +1,6 @@
 .outerRight {
   display: flex;
-  width: 55vh;
+  max-width: 55vh;
   height: 1.35rem;
 }
 
@@ -46,9 +46,9 @@
   padding-right: 5px;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 600px) {
   .outer {
-    margin: 0vh 0vh 0vh 5vh;
+    margin: 0vh 2vh 0vh 2vh;
   }
   .outerRight {
     width: 35vh;
