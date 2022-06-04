@@ -14,6 +14,7 @@ function ModalComp({ modalStatus, setModalStatus, toaster, col, evaluated }) {
   const share = () => {
     navigator.clipboard.writeText(ShareGenerator(evaluated));
     toaster("Text copied to clipboard");
+    alert("Text copied, paste it where you want to share");
   };
   return (
     <div className="modalWrapper">
