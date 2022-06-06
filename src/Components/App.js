@@ -74,7 +74,7 @@ function App() {
             >
               <img src={info} alt="info" />
             </button>
-            <Info infoStatus={infoStatus} setInfoStatus={setInfoStatus} />
+            <Info />
           </div>
           <h3>ወርድል</h3>
           <div className="right-header">
