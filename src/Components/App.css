@@ -27,9 +27,11 @@ body {
   text-align: center;
   border-bottom: 0.5px solid #3a3a3c;
   align-content: center;
+  display: grid;
 }
 .header h3 {
   font-size: 2rem;
+  margin: 1rem;
 }
 .header .col-amount {
   width: 6rem;

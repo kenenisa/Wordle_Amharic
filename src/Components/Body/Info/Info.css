@@ -1,23 +1,22 @@
 .info-modal {
-  position: absolute;
-  top: 0;
-  /* left: 40px;
-  right: 40px; */
+  animation: reveral 1s ease;
   background-color: #121213;
   color: white;
-  /* width: 50vh; */
+  width: 100vw;
   align-items: center;
-  align-self: center;
   text-align: center;
-  place-self: center;
   margin: auto;
-  border-radius: 8px;
-  border: 1px solid rgb(27, 27, 27);
-  box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%);
   z-index: 5;
   overflow: auto;
+  /* align-self: center;
+  place-self: center;
+  border-radius: 8px;
+  border: 1px solid rgb(27, 27, 27);
+  box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%); */
 }
-
+.info-modal-out {
+  animation: fade_out 0.3s ease;
+}
 .Overlay {
   position: fixed;
   top: 0;
@@ -34,26 +33,48 @@
 }
 
 .modalBtn {
-  font-size:2rem;
+  font-size: 2rem;
 }
-.modalBody{
+.modalBody {
   text-align: left;
 }
-.modalBody .section{
-  margin:0 2rem 1rem 4rem;
-  padding-bottom:1rem;
+.modalBody .section {
+  margin: 0 2rem 1rem 4rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid rgba(170, 170, 170, 0.377);
 }
 .modalBody .section p {
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
 }
-.modalBody .for-info{
-  height:4rem;
+.modalBody .for-info {
+  height: 4rem;
 }
 
 @media screen and (max-width: 600px) {
-
   .info-modal {
     top: 3rem;
+  }
+}
+@keyframes reveral {
+  from {
+    /* opacity: 50%; */
+    position: absolute;
+    top: 100vh;
+  }
+  to {
+    /* opacity: 100%; */
+    transform-origin: center top;
+    top: 0vh;
+  }
+}
+@keyframes fade_out {
+  from {
+    background-color: aqua;
+    position: absolute;
+    top: 0vh;
+  }
+  to {
+    top: 100vh;
+    background-color: brown;
   }
 }
