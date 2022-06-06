@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/getPlayWord',(req,res)=>{
-  getPlayWord(req.query.col).then(result=>{
+   getPlayWord(req.query.col).then(result=>{
     res.send(result)
   })
 })

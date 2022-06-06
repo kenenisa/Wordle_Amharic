@@ -6,12 +6,14 @@ import { resetLocal } from "../Utils/progress";
 //
 import stats from "./../Assets/stats.svg";
 import info from "./../Assets/info.svg";
+import { crypt, decrypt } from "../Utils/Encryption";
 //
 function App() {
   const [col, setCol] = useState(Number(localStorage.col) || 4);
   const [modalStatus, setModalStatus] = useState(false);
   const [infoStatus, setInfoStatus] = useState(false);
   const [readyToDisplay, setReadyToDisplay] = useState(false);
+  const [readyWord, setReadyWord] = useState(false);
   const [showBody, setShowBody] = useState(true);
   const blink = () => {
     setShowBody(false);
@@ -24,14 +26,29 @@ function App() {
     setCol(val);
     blink();
   };
+  
   useEffect(() => {
-    fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord?col=" + col)
-      .then((e) => e.json())
-      .then((e) => {
-        window.pw = e;
-        console.log(window.pw.join(""));
-      });
-  }, [col]);
+    const populate = () => {
+      const num = { 4: "four", 5: "five" };
+      window.pw = JSON.parse(decrypt(localStorage.art))[num[col]];
+      console.log(window.pw.join(""));
+      !readyWord && setReadyWord(true);
+    };
+    if (!localStorage.art) {
+      fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord?col=" + col)
+        .then((e) => e.json())
+        .then((e) => {
+          localStorage.art = crypt(JSON.stringify(e));
+          populate();
+        })
+        .catch((e) => {
+          console.error(e);
+          alert("External server unresponsive");
+        });
+    } else {
+      populate();
+    }
+  }, [col,readyWord]);
   useEffect(() => {
     if (localStorage.infoCounter) {
       if (localStorage.infoCounter < 3) {
@@ -46,7 +63,7 @@ function App() {
       setReadyToDisplay(true);
     }
   }, []);
-  if (readyToDisplay) {
+  if (readyToDisplay && readyWord) {
     return (
       <div className="App">
         <div className="header">
@@ -97,7 +114,11 @@ function App() {
       </div>
     );
   }
-  return <h1 style={{ color: "white",textAlign:"center" }}>Loading...</h1>;
+  return (
+    <h1 style={{ color: "white", textAlign: "center" }}>
+      Loading{readyToDisplay ? " Words" : ""}...
+    </h1>
+  );
 }
 
 export default App;

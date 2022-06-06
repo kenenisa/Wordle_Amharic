@@ -53,7 +53,7 @@ function Info({ infoStatus, setInfoStatus }) {
                 <div className="row_items a3 ">ብ</div>
               </div>
             </div>
-            <p>🟨 ር የሚለው ፊደል በቃሉ(መንደር) ውስጥ ነው ግን በተሳሳተ ቦታ ላይ።</p>
+            <p>🟨 ር የሚለው ፊደል በቃሉ(መንደር) ውስጥ ነው ግን በተሳሳተ ቦታ ላይ ነው።</p>
             <div className="grid_wrapper for-info">
               <div className="grid_row row-0 final ">
                 <div className="row_items correctFamily a0 ">ማ</div>

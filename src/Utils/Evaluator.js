@@ -8,66 +8,73 @@ const Evaluator = (tried, col) => {
   if (col === 4) {
     allWords = allFour;
   }
-  const chosenWord = JSON.parse(JSON.stringify(window.pw));
+  if (window.pw) {
+    const chosenWord = JSON.parse(JSON.stringify(window.pw));
 
-  let result = [];
-  if (allWords.find((word) => word.word === tried.join(""))) {
-    const spitPlace = (arr) => {
-      const place = [];
-      arr.forEach((l) => {
-        for (let i in alphabet) {
-          if (alphabet[i].find((x) => x === l)) {
-            place.push(i);
-            break;
+    let result = [];
+    if (allWords.find((word) => word.word === tried.join(""))) {
+      const spitPlace = (arr) => {
+        const place = [];
+        arr.forEach((l) => {
+          for (let i in alphabet) {
+            if (alphabet[i].find((x) => x === l)) {
+              place.push(i);
+              break;
+            }
           }
-        }
-      });
-      return place;
-    };
-    const chosenPlace = spitPlace(chosenWord);
-    const triedPlace = spitPlace(tried);
-    tried.forEach((t, i) => {
-      if (!t) return;
-      let val = 0;
-      for (let j = 0; j < chosenWord.length; j++) {
-        if (t === chosenWord[j]) {
-          if (i === j) {
-            val = 4;
-            chosenWord[j] = null;
-            break;
-          } else {
-            val = 3;
-            chosenWord[j] = null;
-            break;
-          }
-        }
-      }
-      result[i] = val;
-    });
-    console.log(triedPlace, chosenPlace);
-    triedPlace.forEach((t, i) => {
-      if (!t) return;
-      if (result[i] === 0) {
+        });
+        return place;
+      };
+      const chosenPlace = spitPlace(chosenWord);
+      const triedPlace = spitPlace(tried);
+      tried.forEach((t, i) => {
+        if (!t) return;
         let val = 0;
-        for (let j = 0; j < chosenPlace.length; j++) {
-          if (t === chosenPlace[j] && chosenWord[j] !== null) {
+        for (let j = 0; j < chosenWord.length; j++) {
+          if (t === chosenWord[j]) {
             if (i === j) {
-              val = 2;
-              chosenPlace[j] = null;
+              val = 4;
+              chosenWord[j] = null;
               break;
             } else {
-              val = 1;
-              chosenPlace[j] = null;
+              val = 3;
+              chosenWord[j] = null;
               break;
             }
           }
         }
         result[i] = val;
-      }
-    });
+      });
+      console.log(triedPlace, chosenPlace);
+      triedPlace.forEach((t, i) => {
+        if (!t) return;
+        if (result[i] === 0) {
+          let val = 0;
+          for (let j = 0; j < chosenPlace.length; j++) {
+            if (t === chosenPlace[j] && chosenWord[j] !== null) {
+              if (i === j) {
+                val = 2;
+                chosenPlace[j] = null;
+                break;
+              } else {
+                val = 1;
+                chosenPlace[j] = null;
+                break;
+              }
+            }
+          }
+          result[i] = val;
+        }
+      });
+    } else {
+      result = new Array(col).fill(-1);
+    }
+    return result;
   } else {
-    result = new Array(col).fill(-1);
+    alert("There was some problem we will automatically reload");
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   }
-  return result;
 };
-export default Evaluator
+export default Evaluator;

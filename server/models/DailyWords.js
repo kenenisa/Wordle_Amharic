@@ -7,8 +7,5 @@ module.exports = function (sequelize, DataTypes) {
     date: {
       type: DataTypes.STRING,
     },
-    col: {
-      type: DataTypes.STRING,
-    },
   });
 };
