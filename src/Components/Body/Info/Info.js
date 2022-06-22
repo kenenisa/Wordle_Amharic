@@ -9,7 +9,7 @@ function Info({ infoStatus, setInfoStatus }) {
       <Modal
         isOpen={infoStatus}
         onRequestClose={() => setInfoStatus(false)}
-        className={infoStatus == false ? "info-modal-out" : "info-modal"}
+        className="info-modal"
         overlayClassName="Overlay"
       >
         <div className="modalHeader">
@@ -19,11 +19,9 @@ function Info({ infoStatus, setInfoStatus }) {
               setInfoStatus(false);
             }}
           >
-            &#215;
+             &#215;
           </button>
-          <h3 className="headerText">
-            <u>እንዴት እንደሚጫወቱ</u>
-          </h3>
+          <h3 className="headerText"><u>እንዴት እንደሚጫወቱ</u></h3>
         </div>
         <div className="modalBody">
           <div className="section">
@@ -55,7 +53,7 @@ function Info({ infoStatus, setInfoStatus }) {
                 <div className="row_items a3 ">ብ</div>
               </div>
             </div>
-            <p>🟨 ር የሚለው ፊደል በቃሉ(መንደር) ውስጥ ነው ግን በተሳሳተ ቦታ ላይ።</p>
+            <p>🟨 ር የሚለው ፊደል በቃሉ(መንደር) ውስጥ ነው ግን በተሳሳተ ቦታ ላይ ነው።</p>
             <div className="grid_wrapper for-info">
               <div className="grid_row row-0 final ">
                 <div className="row_items correctFamily a0 ">ማ</div>
@@ -89,8 +87,8 @@ function Info({ infoStatus, setInfoStatus }) {
               </div>
             </div>
             <p>
-              ⬛ ለ የሚለው ፊደል ቤተሰብ በሙሉ(<u>ለ</u> ሉ ሊ ላ ሌ ል ሎ) በቃሉ(መንደር) ውስጥ የለም።
-              ይህን ፊደል አይጠቀሙ!
+              ⬛ ለ የሚለው ፊደል ቤተሰብ በሙሉ(<u>ለ</u> ሉ ሊ ላ ሌ ል ሎ) በቃሉ(መንደር) ውስጥ የለም። ይህን ፊደል
+              አይጠቀሙ!
             </p>
           </div>
           <div className="section">

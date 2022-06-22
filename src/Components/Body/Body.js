@@ -35,19 +35,20 @@ function Body({ col, modalStatus, setModalStatus }) {
     });
   }, [x, words, evaluated, rowCount, highlight, final, finished, col]);
   useEffect(() => {
-    local = getLocal(col);
-    setWords(local.words);
-    setRowCount(local.rowCount);
-    setFinal(local.final);
-    setEvaluated(local.evaluated);
-    setFinished(local.finished);
-    setHighlight(local.highlight);
+    let newLocal = getLocal(col);
+    setWords(newLocal.words);
+    setRowCount(newLocal.rowCount);
+    setFinal(newLocal.final);
+    setEvaluated(newLocal.evaluated);
+    setFinished(newLocal.finished);
+    setHighlight(newLocal.highlight);
   }, [col]);
-  useEffect(()=>{
-    if(local.finished){
-      setTimeout(()=>setModalStatus(true),2000)
+  useEffect(() => {
+    if (local.finished) {
+      setTimeout(() => setModalStatus(true), 2000);
     }
-  },[finished])
+    // eslint-disable-next-line
+  }, [finished]);
   const changeWords = (k, replace = false) => {
     if (!finished) {
       const temp = words;
