@@ -26,3 +26,4 @@ yarn-error.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 .firebase/hosting.YnVpbGQ.cache
+.gitt
