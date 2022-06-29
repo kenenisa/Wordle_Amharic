@@ -15,6 +15,7 @@ function App() {
   const [readyToDisplay, setReadyToDisplay] = useState(false);
   const [readyWord, setReadyWord] = useState(false);
   const [showBody, setShowBody] = useState(true);
+  const [error, setError] = useState(false);
   const blink = () => {
     setShowBody(false);
     setTimeout(() => {
@@ -26,7 +27,7 @@ function App() {
     setCol(val);
     blink();
   };
-  
+
   useEffect(() => {
     const populate = () => {
       const num = { 4: "four", 5: "five" };
@@ -43,12 +44,12 @@ function App() {
         })
         .catch((e) => {
           console.error(e);
-          alert("External server unresponsive");
+          setError(true);
         });
     } else {
       populate();
     }
-  }, [col,readyWord]);
+  }, [col, readyWord]);
   useEffect(() => {
     if (localStorage.infoCounter) {
       if (localStorage.infoCounter < 3) {
@@ -116,7 +117,8 @@ function App() {
   }
   return (
     <h1 style={{ color: "white", textAlign: "center" }}>
-      Loading{readyToDisplay ? " Words" : ""}...
+      {/* ሰከን ይበሉ... */}
+      {error ? `ችግር አለ። ደግመው ይሞክሩ` : `ሰክን ይበሉ...`}
     </h1>
   );
 }
