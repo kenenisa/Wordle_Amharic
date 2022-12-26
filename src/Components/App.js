@@ -7,6 +7,7 @@ import { resetLocal } from "../Utils/progress";
 import stats from "./../Assets/stats.svg";
 import info from "./../Assets/info.svg";
 import { crypt, decrypt } from "../Utils/Encryption";
+import env from "../Utils/env";
 //
 function App() {
   const [col, setCol] = useState(Number(localStorage.col) || 4);
@@ -36,7 +37,7 @@ function App() {
       !readyWord && setReadyWord(true);
     };
     if (!localStorage.art) {
-      fetch(process.env.REACT_APP_REMOTE_HOST + "/getPlayWord?col=" + col)
+      fetch(env.REMOTE_URL + "/getPlayWord?col=" + col)
         .then((e) => e.json())
         .then((e) => {
           localStorage.art = crypt(JSON.stringify(e));
