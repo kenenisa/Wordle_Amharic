@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const db = require('./models/db.js');
+// const db = require('./models/db.js');
 const getPlayWord = require('./getPlayWord.js')
 
 
@@ -21,7 +21,7 @@ app.get('/getPlayWord',(req,res)=>{
 app.set("port", process.env.PORT || 5000);
 app.set("host", process.env.HOST || "localhost");
 
-db.sequelize.sync().then(function () {
+// db.sequelize.sync().then(function () {
   app.listen(app.get("port"), function () {
     console.log(
       "%s server listening at http://%s:%s",
@@ -30,4 +30,4 @@ db.sequelize.sync().then(function () {
       app.get("port")
     );
   });
-})
+// })

@@ -6,7 +6,7 @@ const mainFive = fs
 const mainFour = fs
   .readFile("./data/mainFour.json")
   .then((e) => JSON.parse(e.toString()));
-const { DailyWords } = require("./models/db.js");
+// const { DailyWords } = require("./models/db.js");
 
 //
 module.exports = async () => {
@@ -14,10 +14,10 @@ module.exports = async () => {
   let wordListFour = await mainFour;
   const date = new Date().toDateString().split(" ");
   const day = date[1] + date[2];
-  // let today = await fs
-  //   .readFile("./data/todaysWord.json")
-  //   .then((e) => JSON.parse(e.toString()));
-  let today = await DailyWords.findOne({ where: { date: day } });
+  let today = await fs
+    .readFile("./data/todaysWord.json")
+    .then((e) => JSON.parse(e.toString()));
+  // let today = await DailyWords.findOne({ where: { date: day } });
   // today = { word: today };
   let chosenWord;
   if (today && today.word) {
@@ -28,8 +28,8 @@ module.exports = async () => {
     const four =
       wordListFour[Math.floor(Math.random() * wordListFour.length)].word.split("");
     chosenWord = JSON.stringify({ four, five })
-    DailyWords.create({ date: day, word: chosenWord });
-    // fs.writeFile("./data/todaysWord.json", JSON.stringify({ [day]: X }));
+    // DailyWords.create({ date: day, word: chosenWord });
+    fs.writeFile("./data/todaysWord.json", JSON.stringify({ [day]: X }));
   }
   return chosenWord
 };
