@@ -18,7 +18,7 @@ app.get('/getPlayWord',(req,res)=>{
 
 
 
-app.set("port", process.env.PORT || 5000);
+app.set("port", process.env.PORT || 5555);
 app.set("host", process.env.HOST || "localhost");
 
 // db.sequelize.sync().then(function () {
